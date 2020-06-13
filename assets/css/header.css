@@ -1,0 +1,42 @@
+body{
+    margin: 0;
+    font-family: Oxygen;
+}
+
+nav{
+    width: 100%;
+    background-color: black;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    height: 105px;
+}
+
+nav a, nav a:visited{
+    text-decoration: none;
+    color: white;
+    font-weight: bold;
+    font-size: 28px;
+    margin: 0 2%;
+}
+
+.logo{
+    margin-right: 6%;
+    margin-left: 1%;
+    font-size: 35px;
+}
+
+.accountIcon, .cartIcon{
+    height: 37px;
+    width: 37px;
+}
+
+.searchIcon{
+    margin: 0 1% 0 3%;
+    height: 27px;
+    width: 27px;
+}
+
+nav a:nth-child(n+6){
+    margin: 0 1%;
+}

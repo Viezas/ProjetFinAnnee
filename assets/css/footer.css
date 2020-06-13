@@ -1,0 +1,118 @@
+footer{
+    width: 100%;
+    background-color: black;
+    height: 346px;
+    display: grid;
+    grid-template-rows: repeat(10, 10%);
+    grid-template-columns: repeat(12, 8.3%);
+    color: white;
+}
+
+.serviceClient{
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    flex-direction: column;
+    grid-row: 1/11;
+    grid-column: 1/4;
+}
+
+.serviceClient p{
+    margin: 10% 0;
+}
+
+footer hr{
+    margin: -5% 0 10% 0;
+    width: 140px;
+    border: 1.2px solid white;
+}
+
+footer p {
+    font-size: 20px;
+}
+
+.informationsPratiques{
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    flex-direction: column;
+    grid-row: 1/11;
+    grid-column: 4/8;
+}
+
+.informationsPratiques hr {
+    margin: -3% 0 5% 0;
+}
+
+.informationsPratiques p{
+    margin: 7% 0;
+}
+
+.newsletter{
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    flex-direction: column;
+    grid-row: 1/7;
+    grid-column: 8/14;
+}
+
+footer input[type=email] {
+    width: 400px;
+    height: 46px;
+    border: none;
+    border-radius: 10px;
+}
+
+footer input[type=image] {
+    width: 70px;
+    height: 50px;
+    background-color: #F0C977;
+    border: none;
+    border-radius: 10px;
+}
+
+.submit{
+    background-color: white;
+    display: flex;
+    align-items: center;
+    border-radius: 10px;
+}
+
+.reseauxSociaux{
+    display: flex;
+    justify-content: flex-start;
+    align-items: flex-start;
+    margin-left: 13%;
+    flex-direction: column;
+    grid-row: 7/11;
+    grid-column: 8/14;
+}
+
+
+.mediaContainer {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    flex-direction: row;
+}
+
+.mediaIcon {
+    height: 20px;
+    width: 20px;
+}
+
+.circle {
+    border: 1px solid white;
+    border-radius: 50px;
+    width: 30px;
+    height: 30px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 6%;
+}
+
+.circle:nth-child(1) {
+    margin-left: 0;
+}
