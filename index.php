@@ -10,7 +10,7 @@ require ('helpers.php');
 //Création du panier si il n'est pas déjà crée
 if (!isset($_SESSION['cart'])){
     $_SESSION['cart'] = [];
-    $_SESSION['cart'][] = 'panier';
+    $_SESSION['cart'][] = 'R2';
 }
 
 //Switch pour savoir vers quel controller on redirige l'utilisateur
@@ -52,9 +52,14 @@ if(isset($_GET['page'])){
             require 'controllers/inscriptionController.php';
             break;
 
-        //Si on demande en url la page d'inscription', on redirige vers le controller : inscriptionController.php
+        //Si on demande en url la page profile, on redirige vers le controller : userController.php
         case'user' :
             require 'controllers/userController.php';
+            break;
+
+        //Si on demande en url la page d'inscription', on redirige vers le controller : adminController.php
+        case'admin' :
+            require 'controllers/adminController.php';
             break;
 
         //Si la demande ne correspond à aucun des cas figuré au dessus, on redirige vers la page d'accueil

@@ -1,0 +1,21 @@
+body{
+    margin: 0;
+    font-family: Oxygen;
+}
+
+nav{
+    width: 100%;
+    background-color: black;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 105px;
+}
+
+nav a, nav a:visited{
+    text-decoration: none;
+    color: white;
+    font-weight: bold;
+    font-size: 28px;
+    margin: 0 2%;
+}

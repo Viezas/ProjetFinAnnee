@@ -35,7 +35,7 @@
             <input id="password" type="password" name="password" required><br>
         </div>
 
-        <input type="submit" value="Connexion">
+        <input type="submit" value="Inscription">
 
     </form>
 

@@ -7,8 +7,8 @@ function emailExist(){
     $query->execute([
         $_POST['email']
     ]);
-    $emailExists = $query->fetch();
-    return $emailExists;
+    $emailExist = $query->fetch();
+    return $emailExist;
 }
 
 function register(){

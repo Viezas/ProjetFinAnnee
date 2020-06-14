@@ -1,6 +1,13 @@
 <h1>Bonjour <?= $_SESSION['user']['first_name'];?></h1>
 
 <div class="linkContainer">
+
+    <?php if ($_SESSION['user']['is_admin'] == 1): ?>
+        <div>
+            <a href="index.php?page=admin">Page admin</a>
+        </div>
+    <?php endif; ?>
+
     <div>
         <a href="">Mes informations</a>
     </div>
@@ -14,15 +21,9 @@
     </div>
 
     <div>
-        <?php if ($_SESSION['user']['is_admin'] == 1): ?>
-            <a href="admin/index.php">Page admin</a><br>
-        <?php endif; ?>
-    </div>
-
-    <div>
         <a href="index.php?page=connexion&action=disconnect">Deconnexion</a>
     </div>
-
 </div>
 
 <?php var_dump($_SESSION['user']); ?>
+<?php var_dump($_SESSION['cart']); ?>

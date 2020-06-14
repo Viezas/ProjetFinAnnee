@@ -1,0 +1,55 @@
+.formContainer{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+}
+
+form{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    margin: 5% 0 1% 0;
+}
+
+label{
+    display:block;
+    float:left;
+    font-size: 25px;
+    text-align: left;
+}
+
+input
+{
+    height: 55px;
+    width: 458px;
+}
+
+input[type="email"],input[type="password"], input[type="text"], select
+{
+    font-size: 25px;
+    border: 1px solid #F0C977;
+    border-radius: 10px;
+}
+
+input[type="submit"]{
+    margin-top: 5%;
+    width: 50%;
+    font-size: 21px;
+    border: 1px solid black;
+    border-radius: 10px;
+    color: black;
+    background-color: #F0C977 ;
+}
+
+.email, .password, .last_name, .first_name, .adress, .admin{
+    display: flex;
+    align-items: flex-start;
+    justify-content: center;
+    flex-flow: column;
+}
+
+.message h1{
+    color: red;
+}

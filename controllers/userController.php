@@ -1,6 +1,7 @@
 <?php
 
-if (!isset($_SESSION['user'])  || $_SESSION['user']['is_admin'] == 0){$view = 'views/index.php';
+if (!isset($_SESSION['user'])){
+    $view = 'views/index.php';
     $pageTitle = 'Let\'s Duel !';
     $pageDescription = 'Accueil du site';
     $style = 'index';
