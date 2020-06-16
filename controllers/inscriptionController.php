@@ -25,6 +25,7 @@ if (isset($_GET['action'])) {
                         if ($register){
                             $user = getUser($_POST);
                             $_SESSION['user'] = [
+                                'id' => $user['id'],
                                 'first_name' => $user['first_name'],
                                 'last_name' => $user['last_name'],
                                 'adress' => $user['adress'],
@@ -51,9 +52,15 @@ if (isset($_GET['action'])) {
             $style = 'connexion';
             break;
 
+        default :
+            header('Location:index.php');
+            exit();
     }
 }
 else{
-    require 'controllers/indexController.php';
+    $view = 'views/index.php';
+    $pageTitle = 'Let\'s Duel !';
+    $pageDescription = 'Accueil du site';
+    $style = 'index';
 }
 

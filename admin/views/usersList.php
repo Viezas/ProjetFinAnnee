@@ -8,18 +8,41 @@
     </div>
 <?php endif; ?>
 
-<div class="addUser">
+<div class="add">
     <a href="index.php?page=users&action=new">Ajouter un utilisateur</a>
 </div>
 <hr>
 
 <table>
+    <thead>
+    <tr>
+        <td><p>Nom</p></td>
+        <td><p>Prénom</p></td>
+        <td><p>Email</p></td>
+        <td><p>Adress</p></td>
+        <td><p>Statut</p></td>
+    </tr>
+    </thead>
     <?php foreach ($users as $user): ?>
     <tr>
         <td>
             <p>
-                <?=$user['first_name']; ?>
                 <?=$user['last_name']; ?>
+            </p>
+        </td>
+        <td>
+            <p>
+                <?=$user['first_name']; ?>
+            </p>
+        </td>
+        <td>
+            <p>
+                <?=$user['email']; ?>
+            </p>
+        </td>
+        <td>
+            <p>
+                <?=$user['adress']; ?>
             </p>
         </td>
         <td>

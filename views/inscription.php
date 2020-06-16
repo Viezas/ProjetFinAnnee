@@ -1,6 +1,6 @@
 <div class="connexionContainer">
 
-    <form action="index.php?page=inscription&action=register" method="post">
+    <form action="index.php?page=inscription&action=register" method="post" enctype="multipart/form-data">
 
         <?php if (isset($_SESSION['messages']) && !empty($_SESSION['messages'])): ?>
             <?php foreach ($_SESSION['messages'] as $message): ?>

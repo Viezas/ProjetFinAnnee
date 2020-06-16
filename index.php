@@ -10,7 +10,6 @@ require ('helpers.php');
 //Création du panier si il n'est pas déjà crée
 if (!isset($_SESSION['cart'])){
     $_SESSION['cart'] = [];
-    $_SESSION['cart'][] = 'R2';
 }
 
 //Switch pour savoir vers quel controller on redirige l'utilisateur

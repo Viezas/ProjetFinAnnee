@@ -1,5 +1,5 @@
 <div class="connexionContainer">
-    <form action="index.php?page=connexion&action=connexion" method="post">
+    <form action="index.php?page=connexion&action=connexion" method="post" enctype="multipart/form-data">
 
         <?php if (isset($_SESSION['messages']) && !empty($_SESSION['messages'])): ?>
             <?php foreach ($_SESSION['messages'] as $message): ?>

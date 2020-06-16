@@ -1,5 +1,5 @@
 <?php
-require ('helpers.php');
+require ('../helpers.php');
 
 if(isset($_GET['page'])){
     switch ($_GET['page']){

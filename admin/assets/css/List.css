@@ -8,7 +8,7 @@ table{
 }
 
 table td{
-    width: 150px;
+    width: 200px;
     border: 1px solid black;
     height: 50px;
 }
@@ -19,21 +19,31 @@ table td a, table td p{
     justify-content: center;
 }
 
-table td a:link, table td a:visited, .addUser a:link ,.addUser a:visited{
+table td a:link, table td a:visited{
     text-decoration: none;
     color: blue;
+}
+
+.add a:link ,.add a:visited{
+    color: white;
+    text-decoration: none;
 }
 
 .deleteUser:link, .deleteUser:visited{
     color: red;
 }
 
-.addUser a{
-    font-size: 20px;
+.add a{
+    font-size: 25px;
 }
 
-.addUser{
+.add{
+    border: 1px solid black;
+    background-color: #3428ff;
+    border-radius: 10px;
     margin: 1% 1% 0 1%;
+    width: 10%;
+    padding-left: 2.5%;
 }
 
 hr{

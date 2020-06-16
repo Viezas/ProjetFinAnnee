@@ -25,5 +25,4 @@
     </div>
 </div>
 
-<?php var_dump($_SESSION['user']); ?>
 <?php var_dump($_SESSION['cart']); ?>

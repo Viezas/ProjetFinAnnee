@@ -8,7 +8,7 @@ if (isset($_GET['action'])){
             $view = 'views/usersList.php';
             $pageTitle = 'Let\'s Duel ! | Utilisateurs';
             $pageDescription = 'Liste tout les utilisateurs';
-            $style = 'usersList';
+            $style = 'list';
             break;
 
         case 'new':
@@ -117,7 +117,7 @@ if (isset($_GET['action'])){
                 }
             }
             else{
-                $_SESSION['messages'][] = 'Erreur lors de la suppression...';
+                $_SESSION['messages'][] = 'Erreur lors de la suppression !';
             }
             header('location: index.php?page=users&action=list');
             exit;

@@ -19,12 +19,14 @@ if (isset($_GET['action'])){
             if (!empty($_POST)) {
                 if (empty($_POST['email']) || empty($_POST['password'])) {
                     $_SESSION['messages'][] = 'Tout les champs sont obligatoires !';
+                    $view = 'views/connexion.php';
                 }
                 else{
                     $connexion = connexion();
                     if ($connexion){
                         $user = getUser($_POST);
                         $_SESSION['user'] = [
+                            'id' => $user['id'],
                             'first_name' => $user['first_name'],
                             'last_name' => $user['last_name'],
                             'adress' => $user['adress'],

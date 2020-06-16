@@ -17,5 +17,15 @@ if (isset($_GET['action'])){
             $pageDescription = 'Profile de l\'utilisateur';
             $style = 'user';
             break;
+
+        default :
+            header('Location:index.php');
+            exit();
     }
+}
+else{
+    $view = 'views/index.php';
+    $pageTitle = 'Let\'s Duel !';
+    $pageDescription = 'Accueil du site';
+    $style = 'index';
 }
