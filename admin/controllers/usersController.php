@@ -15,7 +15,7 @@ if (isset($_GET['action'])){
             $view = 'views/userForm.php';
             $pageTitle = 'Let\'s Duel ! | Ajouter un Utilisateur';
             $pageDescription = 'formulaire d\'ajouter d\'un utilisateur';
-            $style = 'userForm';
+            $style = 'form';
             break;
 
         case 'add':
@@ -25,14 +25,14 @@ if (isset($_GET['action'])){
                     $view = 'views/userForm.php';
                     $pageTitle = 'Let\'s Duel ! | Ajouter un Utilisateur';
                     $pageDescription = 'formulaire d\'ajouter d\'un utilisateur';
-                    $style = 'userForm';
+                    $style = 'form';
                 }
                 elseif (!ctype_digit($_POST['is_admin']) && (intval($_POST['is_admin']) !== 0 || intval($_POST['is_admin']) !==1)){
                     $_SESSION['messages'][] = 'Ne touchez pas au code via la console s\'il-vous-plaît !!!';
                     $view = 'views/userForm.php';
                     $pageTitle = 'Let\'s Duel ! | Ajouter un Utilisateur';
                     $pageDescription = 'formulaire d\'ajouter d\'un utilisateur';
-                    $style = 'userForm';
+                    $style = 'form';
                 }
                 else {
                     $emailExist = emailExist();
@@ -54,7 +54,7 @@ if (isset($_GET['action'])){
                         $view = 'views/userForm.php';
                         $pageTitle = 'Let\'s Duel ! | Ajouter un Utilisateur';
                         $pageDescription = 'formulaire d\'ajouter d\'un utilisateur';
-                        $style = 'userForm';
+                        $style = 'form';
                     }
                 }
             }
@@ -77,7 +77,7 @@ if (isset($_GET['action'])){
                     $view = 'views/userForm.php';
                     $pageTitle = 'Let\'s Duel ! | Modifier un Utilisateur';
                     $pageDescription = 'formulaire de modification d\'un utilisateur';
-                    $style = 'userForm';
+                    $style = 'form';
                 }
                 elseif (!ctype_digit($_POST['is_admin']) && (intval($_POST['is_admin']) !== 0 || intval($_POST['is_admin']) !==1)){
                     $_SESSION['messages'][] = 'Ne touchez pas au code via la console s\'il-vous-plaît !!!';
@@ -85,7 +85,7 @@ if (isset($_GET['action'])){
                     $view = 'views/userForm.php';
                     $pageTitle = 'Let\'s Duel ! | Modifier un Utilisateur';
                     $pageDescription = 'formulaire de modification d\'un utilisateur';
-                    $style = 'userForm';
+                    $style = 'form';
                 }
                 else {
                     $updateUser = updateUser($_GET['id'], $_POST);
@@ -105,7 +105,7 @@ if (isset($_GET['action'])){
                 $view = 'views/userForm.php';
                 $pageTitle = 'Let\'s Duel ! | Modifier un Utilisateur';
                 $pageDescription = 'formulaire de modification d\'un utilisateur';
-                $style = 'userForm';
+                $style = 'form';
             }
             break;
 

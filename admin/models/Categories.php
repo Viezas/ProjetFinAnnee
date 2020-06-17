@@ -25,7 +25,7 @@ function add($informations){
 
     $query = $db->prepare("INSERT INTO categories (name, description) VALUES( :name, :description)");
     $result = $query->execute([
-        'name' => $informations['name'],
+        'name' => htmlspecialchars($informations['name']),
         'description' => htmlspecialchars($informations['description']),
     ]);
 
@@ -69,7 +69,7 @@ function updateCategory($id, $informations){
 
     $result = $query->execute(
         [
-            $informations['name'],
+            htmlspecialchars($informations['name']),
             htmlspecialchars($informations['description']),
             $id,
         ]

@@ -26,19 +26,11 @@ input
     width: 458px;
 }
 
-textarea, input[type="text"],input[type="file"]
+input[type="email"],input[type="password"], input[type="text"],input[type="file"], input[type="number"], input[type="checkbox"], select, textarea
 {
     font-size: 25px;
     border: 1px solid #F0C977;
     border-radius: 10px;
-}
-
-textarea#description{
-    height: 150px;
-    width: 450px;
-    resize: none;
-    font-size: 25px;
-    margin-bottom: 5%;
 }
 
 input[type="submit"]{
@@ -51,7 +43,15 @@ input[type="submit"]{
     background-color: #F0C977 ;
 }
 
-.name, .description, .image{
+textarea#description{
+    height: 150px;
+    width: 450px;
+    resize: none;
+    font-size: 25px;
+    margin-bottom: 5%;
+}
+
+.email, .password, .last_name, .first_name, .adress, .admin,.name, .description, .image, .price, .stock, .is_activated, .categories, .is_main{
     display: flex;
     align-items: flex-start;
     justify-content: center;

@@ -20,9 +20,9 @@
             <input id="price" type="text" name="price" value="<?= isset($_SESSION['old_inputs']) ? $_SESSION['old_inputs']['price'] : '' ?><?= isset($product) ? $product['price'] : '' ?>" required><br>
         </div>
 
-        <div class="quantity">
-            <label for="quantity">Quantité</label>
-            <input id="quantity" type="number" min="1" name="quantity" value="<?= isset($_SESSION['old_inputs']) ? $_SESSION['old_inputs']['quantity'] : '' ?><?= isset($product) ? $product['quantity'] : '' ?>" required><br>
+        <div class="stock">
+            <label for="stock">Quantité</label>
+            <input id="stock" type="number" min="1" name="stock" value="<?= isset($_SESSION['old_inputs']) ? $_SESSION['old_inputs']['stock'] : '' ?><?= isset($product) ? $product['stock'] : '' ?>" required><br>
         </div>
 
         <div class="categories">
@@ -38,19 +38,6 @@
         <div class="description">
             <label for="description">Description</label>
             <textarea id="description" name="description" required><?= isset($_SESSION['old_inputs']) ? $_SESSION['old_inputs']['description'] : '' ?><?= isset($product) ? $product['description'] : '' ?></textarea>
-        </div>
-
-        <?php if (isset($product['image']) && !empty($product['image'])): ?>
-            <div>
-                <p>Image actuelle :</p>
-                <img src="../assets/img/product/<?= $product['image']; ?>" alt="Image du produit <?= $product['name'];?>">
-            </div>
-        <?php endif; ?>
-
-
-        <div class="image">
-            <label for="image">Image :</label>
-            <input type="file" name="image" id="image" required/><br>
         </div>
 
         <div class="is_activated">

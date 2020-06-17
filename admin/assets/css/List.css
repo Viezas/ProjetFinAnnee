@@ -46,6 +46,10 @@ table td a:link, table td a:visited{
     padding-left: 2.5%;
 }
 
+.btnContainer{
+    display: flex;
+}
+
 hr{
     border: 1.2px solid gray;
 }

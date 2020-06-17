@@ -10,6 +10,7 @@
 <div class="add">
     <a href="index.php?page=products&action=new">Ajouter un produit</a>
 </div>
+
 <hr>
 
 <table>
@@ -17,10 +18,10 @@
     <tr>
         <td><p>Nom</p></td>
         <td><p>Prix</p></td>
-        <td><p>Quantité</p></td>
+        <td><p>Stock</p></td>
         <td><p>Catégorie</p></td>
-        <td><p>Image</p></td>
         <td><p>Statut</p></td>
+        <td><p>Images</p></td>
     </tr>
     </thead>
     <?php foreach ($products as $product): ?>
@@ -37,7 +38,7 @@
             </td>
             <td>
                 <p>
-                    <?=$product['quantity']; ?>
+                    <?=$product['stock']; ?>
                 </p>
             </td>
             <td>
@@ -53,21 +54,15 @@
             </td>
             <td>
                 <p>
-                    <?php if (isset($product['image']) && !empty($product['image'])) :?>
-                        Oui
-                    <?php else:?>
-                        Non
-                    <?php endif; ?>
-                </p>
-            </td>
-            <td>
-                <p>
                     <?php if (isset($product['is_activated']) && !empty($product['is_activated'])) :?>
                         Activé
                     <?php else:?>
                         Non activé
                     <?php endif; ?>
                 </p>
+            </td>
+            <td>
+                <a href="index.php?page=images&action=list&id=<?= $product['id'] ?>">Voir</a>
             </td>
             <td>
                 <a href="index.php?page=products&action=edit&id=<?= $product['id'] ?>">Modifier</a>

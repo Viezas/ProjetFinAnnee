@@ -1,6 +1,1 @@
-<p>Index de la page admin ! Mais il y a rien à vois ici alors filez !</p>
-
-<?php
-var_dump($_SESSION['user']);
-
-?>
+<h3>Bienvenue <?= $_SESSION['user']['first_name']; ?> dans la partie dédié aux admins !</h3>

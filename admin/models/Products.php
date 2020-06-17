@@ -42,30 +42,14 @@ function addProduct($informations)
 {
     $db = dbConnect();
 
-    $query = $db->prepare("INSERT INTO products (name, price, quantity, description) VALUES( :name, :price, :quantity, :description)");
+    $query = $db->prepare("INSERT INTO products (name, price, stock, description, is_activated) VALUES( :name, :price, :stock, :description, :is_activated)");
     $result = $query->execute([
-        'name' => $informations['name'],
-        'price' => $informations['price'],
-        'quantity' => $informations['quantity'],
-        htmlspecialchars($informations['description']),
+        'name' => htmlspecialchars($informations['name']),
+        'price' => htmlspecialchars($informations['price']),
+        'stock' => htmlspecialchars($informations['stock']),
+        'description' => htmlspecialchars($informations['description']),
+        'is_activated' => $informations['is_activated'],
     ]);
-
-    if($result && !empty($_FILES['image']['tmp_name'])){
-        $productId = $db->lastInsertId();
-
-        $allowed_extensions = array( 'jpg' , 'jpeg' , 'gif', 'png' );
-        $my_file_extension = pathinfo( $_FILES['image']['name'] , PATHINFO_EXTENSION);
-        if (in_array($my_file_extension , $allowed_extensions)){
-            $new_file_name = $productId . '.' . $my_file_extension ;
-            $destination = '../assets/img/product/' . $new_file_name;
-            $result = move_uploaded_file( $_FILES['image']['tmp_name'], $destination);
-
-            $db->query("UPDATE products SET image = '$new_file_name' WHERE id = $productId");
-        }
-    }
-    else{
-        return false;
-    }
 
     return $result;
 }
@@ -101,14 +85,15 @@ function insertProductCategoriesLinks($productId,$categoryIds){
 function updateProduct($id, $informations){
     $db = dbConnect();
 
-    $query = $db->prepare('UPDATE products SET name = ?, price = ? , quantity = ?, description = ? WHERE id = ?');
+    $query = $db->prepare('UPDATE products SET name = ?, price = ? , stock = ?, description = ?, is_activated = ? WHERE id = ?');
 
     $result = $query->execute(
         [
-            $informations['name'],
-            $informations['price'],
-            $informations['quantity'],
+            htmlspecialchars($informations['name']),
+            htmlspecialchars($informations['price']),
+            htmlspecialchars($informations['stock']),
             htmlspecialchars($informations['description']),
+            $informations['is_activated'],
             $id,
         ]
     );
@@ -120,30 +105,9 @@ function updateProduct($id, $informations){
         ]
     );
 
-    if($result && !empty($_FILES['image']['tmp_name'])){
-        $product = getProduct($id);
-        if(!empty($product['image'])){
-            $unlink = unlink("../assets/img/product/". $product['image']);
-        }
-
-        $allowed_extensions = array( 'jpg' , 'jpeg' , 'gif', 'png' );
-        $my_file_extension = pathinfo( $_FILES['image']['name'] , PATHINFO_EXTENSION);
-        if (in_array($my_file_extension , $allowed_extensions)){
-            $new_file_name = $id . '.' . $my_file_extension ;
-            $destination = '../assets/img/product/' . $new_file_name;
-            $result = move_uploaded_file( $_FILES['image']['tmp_name'], $destination);
-
-            $db->query("UPDATE products SET image = '$new_file_name' WHERE id = $id");
-        }
-    }
-    else{
-        return false;
-    }
-
     if(isset($informations['category_id'])){
         insertProductCategoriesLinks($id, $informations['category_id']);
     }
-    //vérifier si nouveau fichier à été envoyé, et écraser l'ancien si c'est le cas
 
     return $result;
 }

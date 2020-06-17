@@ -17,11 +17,11 @@ function register(){
     $query = $db->prepare('INSERT INTO users (first_name, last_name, adress, email, password) VALUES (?, ?, ?, ?, ?)');
     $result = $query->execute(
         [
-            $_POST['first_name'],
-            $_POST['last_name'],
-            $_POST['adress'],
-            $_POST['email'],
-            hash('md5', $_POST['password']),
+            htmlspecialchars($_POST['first_name']),
+            htmlspecialchars($_POST['last_name']),
+            htmlspecialchars($_POST['adress']),
+            htmlspecialchars($_POST['email']),
+            htmlspecialchars(hash('md5', $_POST['password'])),
         ]
     );
 

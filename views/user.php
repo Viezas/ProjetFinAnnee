@@ -4,7 +4,7 @@
 
     <?php if ($_SESSION['user']['is_admin'] == 1): ?>
         <div>
-            <a href="index.php?page=admin">Page admin</a>
+            <a href="admin/index.php">Page admin</a>
         </div>
     <?php endif; ?>
 
@@ -25,4 +25,5 @@
     </div>
 </div>
 
+<?php var_dump($_SESSION['user']); ?>
 <?php var_dump($_SESSION['cart']); ?>

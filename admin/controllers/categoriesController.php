@@ -15,7 +15,7 @@ if (isset($_GET['action'])){
             $view = 'views\categoryForm.php';
             $pageTitle = 'Let\'s Duel ! | Ajout d\'une catégrorie';
             $pageDescription = 'Formulaire d\'ajout d\'une catégorie';
-            $style = 'categoryForm';
+            $style = 'form';
             break;
 
         case 'add':
@@ -29,7 +29,7 @@ if (isset($_GET['action'])){
                 $view = 'views\categoryForm.php';
                 $pageTitle = 'Let\'s Duel ! | Ajout d\'une catégrorie';
                 $pageDescription = 'Formulaire d\'ajout d\'une catégorie';
-                $style = 'categoryForm';
+                $style = 'form';
             }
             else{
                 $add = add($_POST);
@@ -53,7 +53,7 @@ if (isset($_GET['action'])){
                     $view = 'views\categoryForm.php';
                     $pageTitle = 'Let\'s Duel ! | Ajout d\'une catégrorie';
                     $pageDescription = 'Formulaire d\'ajout d\'une catégorie';
-                    $style = 'categoryForm';
+                    $style = 'form';
                 }else {
                     $result = updateCategory($_GET['id'], $_POST);
                     $_SESSION['messages'][] = $result ? 'Categorie mis à jour !' : 'Erreur lors de la mise à jour !';
@@ -71,13 +71,13 @@ if (isset($_GET['action'])){
                     $view = 'views\categoryForm.php';
                     $pageTitle = 'Let\'s Duel ! | Ajout d\'une catégrorie';
                     $pageDescription = 'Formulaire d\'ajout d\'une catégorie';
-                    $style = 'categoryForm';
+                    $style = 'form';
                 }
                 else{
                     $view = 'views\categoryForm.php';
                     $pageTitle = 'Let\'s Duel ! | Ajout d\'une catégrorie';
                     $pageDescription = 'Formulaire d\'ajout d\'une catégorie';
-                    $style = 'categoryForm';
+                    $style = 'form';
                 }
             }
 

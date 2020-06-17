@@ -1,4 +1,11 @@
 <?php
+session_start();
+
+if (!isset($_SESSION['user'])  || $_SESSION['user']['is_admin'] == 0){
+    header('Location:../index.php');
+    exit;
+}
+
 require ('../helpers.php');
 
 if(isset($_GET['page'])){
@@ -17,6 +24,10 @@ if(isset($_GET['page'])){
 
         case'products' :
             require 'controllers/productsController.php';
+            break;
+
+        case 'images':
+            require 'controllers/imagesController.php';
             break;
 
         case'orders' :

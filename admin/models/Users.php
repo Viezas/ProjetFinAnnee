@@ -70,11 +70,11 @@ function updateUser($id, $informations){
         $query = $db->prepare('UPDATE users SET first_name = ?, last_name = ?, email = ?, adress = ?, is_admin = ? WHERE id = ?');
         $result = $query->execute(
             [
-                $informations['first_name'],
-                $informations['last_name'],
-                $informations['email'],
-                $informations['adress'],
-                $informations['is_admin'],
+                htmlspecialchars($informations['first_name']),
+                htmlspecialchars($informations['last_name']),
+                htmlspecialchars($informations['email']),
+                htmlspecialchars($informations['adress']),
+                htmlspecialchars($informations['is_admin']),
                 $id,
             ]
         );
@@ -83,12 +83,12 @@ function updateUser($id, $informations){
         $query = $db->prepare('UPDATE users SET first_name = ?, last_name = ?, email = ?, adress = ?, password = ? , is_admin = ? WHERE id = ?');
         $result = $query->execute(
             [
-                $informations['first_name'],
-                $informations['last_name'],
-                $informations['email'],
-                $informations['adress'],
-                hash('md5', $informations['password']),
-                $informations['is_admin'],
+                htmlspecialchars($informations['first_name']),
+                htmlspecialchars($informations['last_name']),
+                htmlspecialchars($informations['email']),
+                htmlspecialchars($informations['adress']),
+                htmlspecialchars(hash('md5', $informations['password'])),
+                htmlspecialchars($informations['is_admin']),
                 $id,
             ]
         );

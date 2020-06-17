@@ -52,6 +52,7 @@ if (isset($_GET['action'])){
             unset($_SESSION['user']);
             header('Location:index.php');
             exit();
+            break;
 
         default :
             header('Location:index.php');
