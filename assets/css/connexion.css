@@ -62,3 +62,13 @@ small:last-child{
 .message h1{
     color: red;
 }
+
+legend{
+    font-size: 50px;
+    padding: 0 1%;
+    text-align: center;
+}
+
+fieldset{
+    margin: 2% 0;
+}

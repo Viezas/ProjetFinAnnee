@@ -6,5 +6,5 @@
     <a href="index.php?page=accessoires&action=list">Accessoires</a>
     <img src="assets/img/Buttons/search.png" class="searchIcon" alt ="search icon">
     <a href="index.php?page=<?= isset($_SESSION['user']) ? 'user' : 'connexion' ?>&action=<?= isset($_SESSION['user']) ? 'list' : 'form' ?>"><img src="assets/img/Buttons/profile.png" class="accountIcon" alt="account icon"></a>
-    <a href="index.php?page=index"><img src="assets/img/Buttons/shopping-cart.png" class="cartIcon" alt="shopping cart icon"></a>
+    <a href="index.php?page=cart&action=displayCart"><img src="assets/img/Buttons/shopping-cart.png" class="cartIcon" alt="shopping cart icon"></a>
 </nav>

@@ -1,0 +1,92 @@
+.productPageContainer{
+    border: 1px solid blue;
+    height: 600px;
+    display: grid;
+    grid-template-rows: repeat(10,10%);
+    grid-template-columns: repeat(2,50%);
+    grid-column-gap: 2%;
+    padding: 5%;
+}
+
+.productCase{
+    grid-column: 1;
+    grid-row: 1/11;
+    align-self: center;
+    margin: 2% 5% 2% 2%;
+    border: 1px solid black;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.product{
+    padding: 10%;
+    max-height: 90%;
+    max-width: 50%;
+}
+
+.informations{
+    grid-column: 2;
+    grid-row: 1/11;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: flex-start;
+}
+
+.description{
+    border: 1px solid black;
+    min-height: 20%;
+    min-width: 100%;
+    max-height: 100%;
+    max-width: 100%;
+}
+
+.productName, .productPrice{
+    font-size: 40px;
+    margin: 0;
+}
+
+form{
+    margin: 5% 0;
+}
+
+input[type="number"]
+{
+    font-size: 25px;
+    border: 1px solid #F0C977;
+    border-radius: 10px;
+    height: 50px;
+    width: 150px;
+}
+
+input[type="submit"]{
+    margin-top: 5%;
+    width: 200px;
+    height: 50px;
+    font-size: 21px;
+    border: 1px solid black;
+    border-radius: 10px;
+    color: black;
+    background-color: #F0C977 ;
+}
+
+.informations hr{
+    width: 140px;
+    border: 1.2px solid gray;
+    margin-left: 0;
+    margin-right: 0;
+}
+
+.informations hr:nth-child(6){
+    width: 100%;
+}
+
+.description p{
+    font-size: 25px;
+    margin: 0;
+}
+
+h3{
+    margin-top: 0;
+}

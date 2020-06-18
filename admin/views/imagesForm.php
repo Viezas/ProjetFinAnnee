@@ -24,7 +24,7 @@
 
         <div class="is_main">
             <label for="is_main">Image principale</label>
-            <input type="checkbox" id="is_main" name="is_main" <?php if(isset($image)&& $image['main_image']== 1): ?>checked<?php endif; ?>>
+            <input type="checkbox" id="is_main" name="is_main" <?php isset($image) && $image['main_image']== 1 ? 'checked' : '' ;?>>
         </div>
 
         <div class="is_activated">

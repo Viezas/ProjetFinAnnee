@@ -45,24 +45,33 @@
 
     <div class="productContainer">
         <div class="productCase_Container">
-        <!-- Foreach ici -->
-            <div class="productCase"
-                 onmouseover="document.getElementsByClassName('productDescription')[0].style.display='flex'"
-                 onmouseout="document.getElementsByClassName('productDescription')[0].style.display='none'">
-                <a href="index.php?page=accessoires" >
-                    <div class="productImage">
-                        <img src="assets/img/Produits_Scellés/Booster.png" class="product" alt="Booster : Savage Strike">
+            <?php while ($i<sizeof($scelledProducts)):?>
+                <?php foreach ($scelledProducts as $scelledProduct): ?>
+                    <div class="productCase"
+                         onmouseover="document.getElementsByClassName('productDescription')[<?=$i;?>].style.display='flex'"
+                         onmouseout="document.getElementsByClassName('productDescription')[<?=$i;?>].style.display='none'">
+                        <?php $i++;?>
+                        <a href="index.php?page=produitsScelles&action=displayInfo&id<?=$scelledProduct['id'];?>" >
+
+                            <div class="productImage">
+                                <?php foreach ($ScelledProductImages as $ScelledProductImage): ?>
+                                <?php if ($scelledProduct['id'] == $ScelledProductImage['product_id'] && $ScelledProductImage['main_image'] == 1):?>
+                                <img src="assets/img/product/<?=$ScelledProductImage['name'];?>" class="product" alt="<?=$scelledProduct['name'];?>">
+                                    <?php endif;?>
+                                <?php endforeach;?>
+                            </div>
+
+                            <div class="productDescription">
+                                <p>
+                                    <?=$scelledProduct['name'];?><br>
+                                    <?=$scelledProduct['price'];?>€
+                                </p>
+                                <a href="index.php?page=produitsScelles&action=productPage&id=<?=$scelledProduct['id'];?>"><input type="button" value="Voir le produit"></a>
+                            </div>
+                        </a>
                     </div>
-                    <div class="productDescription">
-                        <p>
-                            Booster :<br>
-                            Savage Strike<br>
-                            1.20€
-                        </p>
-                        <a href="index.php?page=produitsScelles&action=list"><input type="button" value="Voir le produit"></a>
-                    </div>
-                </a>
-            </div>
+                <?php endforeach;?>
+            <?php endwhile;?>
         </div>
     </div>
 </div>

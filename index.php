@@ -56,9 +56,12 @@ if(isset($_GET['page'])){
             require 'controllers/userController.php';
             break;
 
-        //Si on demande en url la page d'inscription', on redirige vers le controller : adminController.php
-        case'admin' :
-            require 'controllers/adminController.php';
+        case'cart' :
+            require 'controllers/cartController.php';
+            break;
+
+        case'order' :
+            require 'controllers/orderController.php';
             break;
 
         //Si la demande ne correspond à aucun des cas figuré au dessus, on redirige vers la page d'accueil

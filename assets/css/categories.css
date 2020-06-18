@@ -63,8 +63,8 @@
 }
 
 .product{
-    height: 300px;
-    width: auto;
+    height: 250px;
+    max-width: 500px;
 }
 
 .productDescription {

@@ -1,0 +1,42 @@
+.infoContainer{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+fieldset{
+    height: 550px;
+    width: 95%;
+    margin: 1% 0 2% 0;
+}
+
+legend{
+    font-family: Oxygen;
+    font-size: 30px;
+}
+
+.infoContainer div{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+
+}
+
+
+.infoContainer div:last-child{
+    align-items: flex-start;
+    margin-top: 2%;
+    border: none;
+}
+
+input[type='button']{
+    background-color: #F0C977;
+    font-family: Oxygen;
+    font-weight: bold;
+    font-size: 30px;
+    border: 1px solid black;
+    height: 100px;
+    width: 100%;
+    border-radius: 10px;
+}

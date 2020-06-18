@@ -37,22 +37,32 @@ if (isset($_GET['action'])){
             else{
                 $_POST['is_main'] = 1;
             }
-            $insertImage = insertImage();
-
-            if ($insertImage){
-                $productMainImages = getProductMainImages($_SESSION['productId']);
-                $productSecondaryImages = getProductSecondaryImages($_SESSION['productId']);
-                $view = 'views/imagesList.php';
-                $pageTitle = 'Let\'s Duel ! | Images';
-                $pageDescription = 'Liste tout les images liée à un produit';
-                $style = 'list';
-            }
-            else{
+            $issetMainImage = issetMainImage();
+            if ($issetMainImage){
+                $_SESSION['messages'][] = 'Il existe déjà un main image !';
                 $view = 'views/imagesForm.php';
                 $pageTitle = 'Let\'s Duel ! | Formulaire image';
                 $pageDescription = 'Ajouter une image à unproduit';
                 $style = 'form';
             }
+            else{
+                $insertImage = insertImage();
+                if ($insertImage){
+                    $productMainImages = getProductMainImages($_SESSION['productId']);
+                    $productSecondaryImages = getProductSecondaryImages($_SESSION['productId']);
+                    $view = 'views/imagesList.php';
+                    $pageTitle = 'Let\'s Duel ! | Images';
+                    $pageDescription = 'Liste tout les images liée à un produit';
+                    $style = 'list';
+                }
+                else{
+                    $view = 'views/imagesForm.php';
+                    $pageTitle = 'Let\'s Duel ! | Formulaire image';
+                    $pageDescription = 'Ajouter une image à unproduit';
+                    $style = 'form';
+                }
+            }
+
             break;
 
         case 'edit':
@@ -68,6 +78,14 @@ if (isset($_GET['action'])){
                 }
                 else{
                     $_POST['is_main'] = 1;
+                }
+                $issetMainImage = issetMainImage();
+                if ($issetMainImage){
+                    $_SESSION['messages'][] = 'Il existe déjà un main image !';
+                    $view = 'views/imagesForm.php';
+                    $pageTitle = 'Let\'s Duel ! | Formulaire image';
+                    $pageDescription = 'Ajouter une image à unproduit';
+                    $style = 'form';
                 }
                 $result = updateImage($_GET['id'], $_POST);
                 $_SESSION['messages'][] = $result ? 'Image mis à jour !' : 'Erreur lors de la mise à jour !';

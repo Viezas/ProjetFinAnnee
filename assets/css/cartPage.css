@@ -1,0 +1,103 @@
+.cartContainer{
+    display: flex;
+    justify-content: space-around;
+    align-items: flex-start;
+}
+
+table{
+    width: 70%;
+    height: 30%;
+    border: 1px solid black;
+    border-collapse: collapse;
+    margin: 2% 2% 2% 5%;
+}
+
+table td{
+    width: 20%;
+    height: 50px;
+    border-bottom: 1px solid black;
+}
+
+table td p, table td h2{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+table td p{
+    font-size: 25px;
+    text-align: center;
+}
+
+thead{
+    border: 1px solid black;
+}
+
+.image{
+    max-width: 80%;
+    max-height: 90%;
+}
+
+.delete{
+    max-width: 30%;
+    max-height: 50%;
+}
+
+form{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+}
+
+.paiement{
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    flex-direction: column;
+}
+
+input[type="number"]{
+    text-align: center;
+    font-size: 20px;
+    border: 1px solid #F0C977;
+    border-radius: 10px;
+}
+
+input[type="submit"]{
+    border: 1px solid black;
+    border-radius: 10px;
+    color: black;
+    font-size: 20px;
+    background-color: #F0C977 ;
+}
+
+.toOrder{
+    max-width: 50%;
+    max-height: 100%;
+    padding: 2%;
+    font-size: 25px;
+    border: 1px solid black;
+    border-radius: 10px;
+    color: black;
+    background-color: #F0C977 ;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 2% 0;
+}
+
+a:link, a:visited{
+    text-decoration: none;
+    color: #f0a938;
+}
+
+.creditCard{
+    max-width: 20%;
+    max-height: 50%;
+}
+
+.paypal{
+    max-width: 60%;
+    max-height: 60%;
+}

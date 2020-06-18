@@ -1,4 +1,4 @@
-<h2>Catégories : </h2>
+<h2>Produits : </h2>
 
 <?php if(isset($_SESSION['messages'])): ?>
     <div>

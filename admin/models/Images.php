@@ -108,3 +108,14 @@ function updateImage($id, $informations){
 
     return $result;
 }
+
+function issetMainImage(){
+    $db = dbConnect();
+
+    $query = $db->prepare('SELECT main_image = 1 FROM product_images WHERE product_id = ?');
+    $query->execute([
+        $_SESSION['productId'],
+    ]);
+    $mainImageExist = $query->fetch();
+    return $mainImageExist;
+}

@@ -1,0 +1,37 @@
+.ordersContainer{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+table tr:nth-child(odd){
+    background-color: #dcdbd8;
+}
+
+table{
+    border-collapse: collapse;
+    margin: 1%;
+}
+
+table td{
+    width: 200px;
+    border: 1px solid black;
+    height: 50px;
+}
+
+table td a, table td p, table td h2{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+}
+
+table td a:link, table td a:visited{
+    text-decoration: none;
+    color: blue;
+}
+
+h2{
+    margin: 2%;
+}
