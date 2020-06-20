@@ -3,7 +3,7 @@
 <?php if(isset($_SESSION['messages'])): ?>
     <div>
         <?php foreach($_SESSION['messages'] as $message): ?>
-            <h3><?= $message ?></h3>
+            <h3 style="color: red"><?= $message ?></h3>
         <?php endforeach; ?>
     </div>
 <?php endif; ?>

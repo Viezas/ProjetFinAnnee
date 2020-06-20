@@ -83,8 +83,8 @@ function updateImage($id, $informations){
 
     $result = $query->execute(
         [
-            htmlspecialchars($informations['main_image']),
-            htmlspecialchars($informations['is_activated']),
+            $informations['is_main'],
+            $informations['is_activated'],
             $id,
         ]
     );

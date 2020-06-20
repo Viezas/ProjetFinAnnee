@@ -9,16 +9,22 @@
     margin: 1% 0;
     display: flex;
     border: 1px solid black;
-    width: 432px;
+    width: 28.125vw;
     height: auto;
     padding: 1%;
     align-items: flex-start;
     justify-content: flex-start;
 }
 
+.productImage{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
 .filter hr{
     margin-left: 0;
-    width: 40%;
+    max-width: 40%;
     border: 1.2px solid gray;
 }
 
@@ -41,30 +47,30 @@
 .productContainer{
     margin: -0.5% 0 0 0.7%;
     height: 100%;
-    width: 100%;
+    max-width: 100%;
     display: grid;
 }
 
 .productCase_Container{
     display: flex;
     align-items: flex-start;
-    justify-content: flex-start;
+    justify-content: space-between;
     flex-wrap: wrap;
 }
 
 .productCase{
     margin: 2%;
     border: 1px solid black;
-    width: 335px;
-    height: 335px;
+    width: 21.809895833333332vw;
+    height: 46.398891966759vh;
     display: flex;
     align-items: center;
     justify-content: center;
+    overflow: hidden;
 }
 
 .product{
-    height: 250px;
-    max-width: 500px;
+    max-height: 34.62603878116344vh;
 }
 
 .productDescription {
@@ -76,8 +82,8 @@
     font-size: 25px;
     text-align: center;
     margin: 0;
-    height: 335px;
-    width: 335px;
+    height: 46.398891966759vh;
+    width: 21.809895833333332vw;
     background-color: rgba(235, 235, 235, .5);
     align-items: center;
     justify-content: center;
@@ -90,12 +96,50 @@ input[type='button']{
     font-weight: bold;
     font-size: 15px;
     border: 1px solid black;
-    height: 52px;
-    width: 172px;
+    height: 7.202216066481994vh;
+    min-width: 11.197916666666666vw;
     border-radius: 10px;
 }
 
 a:link, a:visited{
     text-decoration: none;
     color: black;
+}
+
+@media (max-width: 1085px) {
+    div.productContainer{
+        height: 100%;
+    }
+
+    .productCase_Container{
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+
+    .productCase{
+        width: 33.482142857142854vw;
+    }
+
+    .product{
+        max-height: 40.16620498614959vh;
+    }
+
+    .productDescription {
+        width: 33.271719038817004vw;
+    }
+}
+
+@media (max-width: 830px) {
+    .productCase{
+        width: 49.62779156327544vw;
+    }
+
+    .productDescription{
+        width: 49.62779156327544vw;
+    }
+
+    .product{
+        max-height: 40.16620498614959vh;
+    }
+
 }

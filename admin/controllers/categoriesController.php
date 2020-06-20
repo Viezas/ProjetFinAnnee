@@ -19,17 +19,13 @@ if (isset($_GET['action'])){
             break;
 
         case 'add':
-            if(empty($_POST['name'])){
-
+            if(!empty($_POST)){
                 if(empty($_POST['name'])){
                     $_SESSION['messages'][] = 'Le champ nom est obligatoire !';
                 }
-
                 $_SESSION['old_inputs'] = $_POST;
-                $view = 'views\categoryForm.php';
-                $pageTitle = 'Let\'s Duel ! | Ajout d\'une catégrorie';
-                $pageDescription = 'Formulaire d\'ajout d\'une catégorie';
-                $style = 'form';
+                header('Location:index.php?page=categories&action=new');
+                exit;
             }
             else{
                 $add = add($_POST);
@@ -50,10 +46,8 @@ if (isset($_GET['action'])){
                     }
 
                     $_SESSION['old_inputs'] = $_POST;
-                    $view = 'views\categoryForm.php';
-                    $pageTitle = 'Let\'s Duel ! | Ajout d\'une catégrorie';
-                    $pageDescription = 'Formulaire d\'ajout d\'une catégorie';
-                    $style = 'form';
+                    header('Location:index.php?page=categories&action=new');
+                    exit;
                 }else {
                     $result = updateCategory($_GET['id'], $_POST);
                     $_SESSION['messages'][] = $result ? 'Categorie mis à jour !' : 'Erreur lors de la mise à jour !';
@@ -68,16 +62,12 @@ if (isset($_GET['action'])){
                         header('Location:index.php?page=categories&action=list');
                         exit;
                     }
-                    $view = 'views\categoryForm.php';
-                    $pageTitle = 'Let\'s Duel ! | Ajout d\'une catégrorie';
-                    $pageDescription = 'Formulaire d\'ajout d\'une catégorie';
-                    $style = 'form';
+                    header('Location:index.php?page=categories&action=new');
+                    exit;
                 }
                 else{
-                    $view = 'views\categoryForm.php';
-                    $pageTitle = 'Let\'s Duel ! | Ajout d\'une catégrorie';
-                    $pageDescription = 'Formulaire d\'ajout d\'une catégorie';
-                    $style = 'form';
+                    header('Location:index.php?page=categories&action=new');
+                    exit;
                 }
             }
 
@@ -99,9 +89,11 @@ if (isset($_GET['action'])){
             exit;
 
         default:
-            require 'controllers/indexController.php';
+            header('Location:index.php');
+            exit();
     }
 }
 else{
-    require 'controllers/indexController.php';
+    header('Location:index.php');
+    exit();
 }

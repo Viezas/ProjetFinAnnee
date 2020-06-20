@@ -1,5 +1,6 @@
 <?php
 
+require 'models/Accessories.php';
 
 //Vérification qu'une action a été demandé
 if (isset($_GET['action'])){
@@ -7,13 +8,28 @@ if (isset($_GET['action'])){
     switch ($_GET['action']){
         //Si on demande de lister les produits
         case 'list':
+            $accessories = getAllAccessories();
+            $accessoriesImages = accessoriesImages();
+            $i=0;
             $view = 'views/accessoires.php';
             $pageTitle = 'Let\'s Duel ! | Accessoires';
-            $pageDescription = 'Affiches les accessoires';
+            $pageDescription = 'Affiche tout les accessoires';
             $style = 'categories';
             break;
 
-        case 'filter':
+        case 'productPage':
+            $product = getProduct($_GET['id']);
+            if ($product){
+                $productImage = productImage($_GET['id']);
+                $view = 'views/productPage.php';
+                $pageTitle = 'Let\'s Duel ! | Produits';
+                $pageDescription = 'Affiche les informations du produits';
+                $style = 'productPage';
+            }
+            else{
+                header('location:index.php?page=accessoires&action=list');
+                exit();
+            }
 
             break;
 
@@ -23,8 +39,6 @@ if (isset($_GET['action'])){
     }
 }
 else{
-    $view = 'views/index.php';
-    $pageTitle = 'Let\'s Duel !';
-    $pageDescription = 'Accueil du site';
-    $style = 'index';
+    header('Location:index.php');
+    exit();
 }

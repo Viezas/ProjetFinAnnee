@@ -20,5 +20,13 @@ if (isset($_GET['action'])){
             $pageDescription = 'Page des commandes pasé';
             $style = 'list';
             break;
+
+        default:
+            header('Location:index.php');
+            exit();
     }
+}
+else{
+    header('Location:index.php');
+    exit();
 }

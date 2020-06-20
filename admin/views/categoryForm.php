@@ -12,7 +12,7 @@
 
         <div class="name">
             <label for="name">Nom</label>
-            <input id="name" type="text" name="name" value="<?= isset($_SESSION['old_inputs']) ? $_SESSION['old_inputs']['name'] : '' ?><?= isset($category) ? $category['name'] : '' ?>" ><br>
+            <input id="name" type="text" name="name" value="<?= isset($_SESSION['old_inputs']) ? $_SESSION['old_inputs']['name'] : '' ?><?= isset($category) ? $category['name'] : '' ?>" required><br>
         </div>
 
         <div class="description">
@@ -30,7 +30,7 @@
 
         <div class="image">
             <label for="image">Image :</label>
-            <input type="file" name="image" id="image" /><br>
+            <input type="file" name="image" id="image" required><br>
         </div>
 
         <input type="submit" value="Valider">

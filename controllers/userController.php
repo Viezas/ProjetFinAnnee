@@ -1,10 +1,8 @@
 <?php
 
 if (!isset($_SESSION['user'])){
-    $view = 'views/index.php';
-    $pageTitle = 'Let\'s Duel !';
-    $pageDescription = 'Accueil du site';
-    $style = 'index';
+    header('Location:index.php');
+    exit();
 }
 
 require 'models/Users.php';
@@ -33,10 +31,8 @@ if (isset($_GET['action'])){
                     if(empty($_POST['adress'])){
                         $_SESSION['messages'][] = 'Le champ adress est obligatoire !';
                     }
-                    $view = 'views/userInfos.php';
-                    $pageTitle = 'Let\'s Duel ! | Info profile';
-                    $pageDescription = 'Informations de l\'utilisateur';
-                    $style = 'connexion';
+                    header('Location:index.php?page=connexion&action=form');
+                    exit();
                 }
                 else {
                     $updateUser = updateUser($_SESSION['user']['id'], $_POST);
@@ -60,14 +56,12 @@ if (isset($_GET['action'])){
             }
             break;
 
-        default :
+        default:
             header('Location:index.php');
             exit();
     }
 }
 else{
-    $view = 'views/index.php';
-    $pageTitle = 'Let\'s Duel !';
-    $pageDescription = 'Accueil du site';
-    $style = 'index';
+    header('Location:index.php');
+    exit();
 }

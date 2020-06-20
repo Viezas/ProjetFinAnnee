@@ -1,19 +1,19 @@
 <?php
 
-function getAllScelledProducts(){
+function getAllAccessories(){
     $db = dbConnect();
 
     $query = $db->query("
         SELECT p.* 
         FROM products p 
         JOIN product_categories pc ON p.id= pc.product_id
-        WHERE pc.category_id IN (1, 2, 3, 4) ORDER BY id ASC");
+        WHERE pc.category_id IN (12, 13, 14, 15) ORDER BY id ASC");
     $products =  $query->fetchAll();
 
     return $products;
 }
 
-function ScelledProductImages(){
+function accessoriesImages(){
     $db = dbConnect();
 
     $query = $db->query("

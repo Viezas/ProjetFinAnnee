@@ -22,7 +22,7 @@
                 <td><p><?= $order['first_name'] ;?></p></td>
                 <td><p><?= $order['delivery_adress'] ;?></p></td>
                 <td><p><?= $order['date'] ;?></p></td>
-                <td><a href="index.php?page=order&action=details&order_id=<?= $order['id'] ;?>">Détail de la commande</a></td>
+                <td><a href="index.php?page=order&action=detail&order_id=<?= $order['id'];?>">Détail de la commande</a></td>
             </tr>
             <?php endforeach; ?>
     </table>

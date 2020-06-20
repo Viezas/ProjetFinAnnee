@@ -51,7 +51,7 @@
                          onmouseover="document.getElementsByClassName('productDescription')[<?=$i;?>].style.display='flex'"
                          onmouseout="document.getElementsByClassName('productDescription')[<?=$i;?>].style.display='none'">
                         <?php $i++;?>
-                        <a href="index.php?page=produitsScelles&action=displayInfo&id<?=$scelledProduct['id'];?>" >
+                        <a href="index.php?page=produitsScelles&action=productPage&id=<?=$scelledProduct['id'];?>" >
 
                             <div class="productImage">
                                 <?php foreach ($ScelledProductImages as $ScelledProductImage): ?>

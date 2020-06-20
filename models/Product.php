@@ -31,3 +31,24 @@ function productImages(){
 
     return $query->fetchAll();
 }
+
+function getLastProducts(){
+    $db = dbConnect();
+
+    $query = $db->query("SELECT * FROM products ORDER BY id DESC LIMIT 3");
+
+    return $query->fetchAll();
+}
+
+function newsImages(){
+    $db = dbConnect();
+
+    $query = $db->query("
+        SELECT pi.* 
+        FROM product_images pi
+        JOIN products p ON pi.product_id = p.id
+        WHERE pi.is_activated = 1");
+    $images =  $query->fetchAll();
+
+    return $images;
+}

@@ -33,7 +33,7 @@
                 <form action="index.php?page=cart&action=update_quantity&product_id=<?=$cartProduct['id'];?>" method="post">
                     <h4>Quantité disponible : <?=$cartProduct['stock'];?></h4>
                     <input type="number" name="quantity" min="0" max="<?=$cartProduct['stock'];?>" value="<?=$_SESSION['cart'][$cartProduct['id']]; ?>"><br>
-                    <input type="submit" value="Modifier la quantité">
+                    <input type="submit" value="Modifier">
                 </form>
             </td>
             <td>
@@ -54,8 +54,10 @@
     <div class="paiement">
         <h1>TOTAL : <?=$total; ?>€</h1>
         <?php if (isset($_SESSION['user'])): ?>
+        <div class="moyen">
             <a href="index.php?page=order&action=new" class="toOrder"><img src="assets/img/Buttons/pay.png" class="creditCard" alt="credit Card icon"></a>
             <a href="index.php?page=order&action=new" class="toOrder"><img src="assets/img/Buttons/paypal.png" class="paypal" alt="paypal icon"></a>
+        </div>
         <?php else:?>
             <p>Vous n'avez-pas encore de compte ?<br> <a href="index.php?page=connexion&action=form">Connectez-vous</a> pour finaliser votre achat !</p><br>
         <?php endif;?>

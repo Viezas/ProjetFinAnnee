@@ -5,7 +5,7 @@
 }
 
 table{
-    width: 70%;
+    min-width: 70%;
     height: 30%;
     border: 1px solid black;
     border-collapse: collapse;
@@ -27,6 +27,7 @@ table td p, table td h2{
 table td p{
     font-size: 25px;
     text-align: center;
+    padding: 0 5%;
 }
 
 thead{
@@ -34,13 +35,11 @@ thead{
 }
 
 .image{
-    max-width: 80%;
-    max-height: 90%;
+    max-width: 70%;
 }
 
 .delete{
     max-width: 30%;
-    max-height: 50%;
 }
 
 form{
@@ -50,7 +49,7 @@ form{
     flex-direction: column;
 }
 
-.paiement{
+.paiement, .moyen{
     display: flex;
     justify-content: flex-end;
     align-items: center;
@@ -94,10 +93,32 @@ a:link, a:visited{
 
 .creditCard{
     max-width: 20%;
-    max-height: 50%;
 }
 
 .paypal{
     max-width: 60%;
-    max-height: 60%;
+}
+table td h4{
+    text-align: center;
+}
+
+@media (max-width: 942px) {
+    .cartContainer{
+        flex-direction: column-reverse;
+    }
+
+    .moyen{
+        flex-direction: row;
+        justify-content: center;
+        align-items: center;
+    }
+
+    div > a:nth-child(1), div > a:nth-child(2){
+        max-width: 20%;
+        margin: 0 2%;
+    }
+
+    form{
+        margin: 10% 0;
+    }
 }

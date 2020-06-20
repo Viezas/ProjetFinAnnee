@@ -19,7 +19,8 @@ if (isset($_GET['action'])){
             if (!empty($_POST)) {
                 if (empty($_POST['email']) || empty($_POST['password'])) {
                     $_SESSION['messages'][] = 'Tout les champs sont obligatoires !';
-                    $view = 'views/connexion.php';
+                    header('Location:index.php?page=connexion&action=form');
+                    exit();
                 }
                 else{
                     $connexion = connexion();
@@ -39,30 +40,27 @@ if (isset($_GET['action'])){
                     }
                     else{
                         $_SESSION['messages'][] = 'Erreur lors de la connexion';
-                        $view = 'views/connexion.php';
+                        header('Location:index.php?page=connexion&action=form');
+                        exit();
                     }
                 }
             }
-            $pageTitle = 'Let\'s Duel ! | Connexion';
-            $pageDescription = 'Formulaire de connexion';
-            $style = 'connexion';
+            header('Location:index.php?page=connexion&action=form');
+            exit();
             break;
 
         case 'disconnect':
-            unset($_SESSION['user']);
-            unset($_SESSION['cart']);
+            session_destroy();
             header('Location:index.php');
             exit();
             break;
 
-        default :
+        default:
             header('Location:index.php');
             exit();
     }
 }
 else{
-    $view = 'views/index.php';
-    $pageTitle = 'Let\'s Duel !';
-    $pageDescription = 'Accueil du site';
-    $style = 'index';
+    header('Location:index.php');
+    exit();
 }

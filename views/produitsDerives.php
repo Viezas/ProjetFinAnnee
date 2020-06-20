@@ -48,22 +48,33 @@
 
     <div class="productContainer">
         <div class="productCase_Container">
-            <!-- Foreach ici -->
-            <div class="productCase"
-                 onmouseover="document.getElementsByClassName('productDescription')[0].style.display='flex'"
-                 onmouseout="document.getElementsByClassName('productDescription')[0].style.display='none'">
-                <a href="index.php?page=accessoires">
-                    <img src="assets/img/Produits_Dérivé/Produit1.jpg" class="product" alt="Figurine Kaiba">
-                    <div class="productDescription">
-                        <p>
-                            Figurine :<br>
-                            Kaiba<br>
-                            15.00€
-                        </p>
-                        <a href="index.php?page=produitsScelles&action=list"><input type="button" value="Voir le produit"></a>
+            <?php while ($i<sizeof($byProducts)):?>
+                <?php foreach ($byProducts as $byProduct): ?>
+                    <div class="productCase"
+                         onmouseover="document.getElementsByClassName('productDescription')[<?=$i;?>].style.display='flex'"
+                         onmouseout="document.getElementsByClassName('productDescription')[<?=$i;?>].style.display='none'">
+                        <?php $i++;?>
+                        <a href="index.php?page=produitsScelles&action=productPage&id=<?=$byProduct['id'];?>" >
+
+                            <div class="productImage">
+                                <?php foreach ($byProductImages as $byProductImage): ?>
+                                    <?php if ($byProduct['id'] == $byProductImage['product_id'] && $byProductImage['main_image'] == 1):?>
+                                        <img src="assets/img/product/<?=$byProductImage['name'];?>" class="product" alt="<?=$byProduct['name'];?>">
+                                    <?php endif;?>
+                                <?php endforeach;?>
+                            </div>
+
+                            <div class="productDescription">
+                                <p>
+                                    <?=$byProduct['name'];?><br>
+                                    <?=$byProduct['price'];?>€
+                                </p>
+                                <a href="index.php?page=produitsScelles&action=productPage&id=<?=$byProduct['id'];?>"><input type="button" value="Voir le produit"></a>
+                            </div>
+                        </a>
                     </div>
-                </a>
-            </div>
+                <?php endforeach;?>
+            <?php endwhile;?>
         </div>
     </div>
 </div>

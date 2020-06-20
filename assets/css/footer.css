@@ -1,7 +1,7 @@
 footer{
-    width: 100%;
+    max-width: 100%;
     background-color: black;
-    height: 346px;
+    height: 47.9224376731302vh;
     display: grid;
     grid-template-rows: repeat(10, 10%);
     grid-template-columns: repeat(12, 8.3%);
@@ -23,7 +23,7 @@ footer{
 
 footer hr{
     margin: -5% 0 10% 0;
-    width: 140px;
+    width: 9.114583333333334vw;
     border: 1.2px solid white;
 }
 
@@ -58,15 +58,15 @@ footer p {
 }
 
 footer input[type=email] {
-    width: 400px;
-    height: 46px;
+    width: 26.041666666666668vw;
+    height: 6.371191135734072vh;
     border: none;
     border-radius: 10px;
 }
 
 footer input[type=image] {
-    width: 70px;
-    height: 50px;
+    width: 4.557291666666667vw;
+    height: 6.925207756232687vh;
     background-color: #F0C977;
     border: none;
     border-radius: 10px;
@@ -98,21 +98,27 @@ footer input[type=image] {
 }
 
 .mediaIcon {
-    height: 20px;
-    width: 20px;
+    max-width: 1.3020833333333333vw;
 }
 
 .circle {
     border: 1px solid white;
     border-radius: 50px;
-    width: 30px;
-    height: 30px;
+    max-width: 4.1551246537396125vh;
+    max-height: 1.953125vw;
     display: flex;
     align-items: center;
     justify-content: center;
     margin: 0 6%;
+    padding: 5%;
 }
 
 .circle:nth-child(1) {
     margin-left: 0;
+}
+
+@media (max-width: 1085px) {
+    body > footer > div.informationsPratiques > div{
+        margin: 0 5%;
+    }
 }

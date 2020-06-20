@@ -22,17 +22,13 @@ if (isset($_GET['action'])){
             if (!empty($_POST)){
                 if (empty($_POST['last_name']) || empty($_POST['first_name']) || empty($_POST['adress']) || empty($_POST['email']) || empty($_POST['password'])){
                     $_SESSION['messages'][] = 'Tout les champs sont obligatoires !';
-                    $view = 'views/userForm.php';
-                    $pageTitle = 'Let\'s Duel ! | Ajouter un Utilisateur';
-                    $pageDescription = 'formulaire d\'ajouter d\'un utilisateur';
-                    $style = 'form';
+                    header('location: index.php?page=users&action=new');
+                    exit();
                 }
                 elseif (!ctype_digit($_POST['is_admin']) && (intval($_POST['is_admin']) !== 0 || intval($_POST['is_admin']) !==1)){
                     $_SESSION['messages'][] = 'Ne touchez pas au code via la console s\'il-vous-plaît !!!';
-                    $view = 'views/userForm.php';
-                    $pageTitle = 'Let\'s Duel ! | Ajouter un Utilisateur';
-                    $pageDescription = 'formulaire d\'ajouter d\'un utilisateur';
-                    $style = 'form';
+                    header('location: index.php?page=users&action=new');
+                    exit();
                 }
                 else {
                     $emailExist = emailExist();
@@ -51,10 +47,8 @@ if (isset($_GET['action'])){
 
                     } else {
                         $_SESSION['messages'][] = 'Email déjà utilisé !';
-                        $view = 'views/userForm.php';
-                        $pageTitle = 'Let\'s Duel ! | Ajouter un Utilisateur';
-                        $pageDescription = 'formulaire d\'ajouter d\'un utilisateur';
-                        $style = 'form';
+                        header('location: index.php?page=users&action=new');
+                        exit();
                     }
                 }
             }
@@ -82,10 +76,8 @@ if (isset($_GET['action'])){
                 elseif (!ctype_digit($_POST['is_admin']) && (intval($_POST['is_admin']) !== 0 || intval($_POST['is_admin']) !==1)){
                     $_SESSION['messages'][] = 'Ne touchez pas au code via la console s\'il-vous-plaît !!!';
                     $_SESSION['old_inputs'] = $_POST;
-                    $view = 'views/userForm.php';
-                    $pageTitle = 'Let\'s Duel ! | Modifier un Utilisateur';
-                    $pageDescription = 'formulaire de modification d\'un utilisateur';
-                    $style = 'form';
+                    header('location: index.php?page=users&action=new');
+                    exit();
                 }
                 else {
                     $updateUser = updateUser($_GET['id'], $_POST);
@@ -102,10 +94,8 @@ if (isset($_GET['action'])){
                         exit;
                     }
                 }
-                $view = 'views/userForm.php';
-                $pageTitle = 'Let\'s Duel ! | Modifier un Utilisateur';
-                $pageDescription = 'formulaire de modification d\'un utilisateur';
-                $style = 'form';
+                header('location: index.php?page=users&action=new');
+                exit();
             }
             break;
 
@@ -124,9 +114,11 @@ if (isset($_GET['action'])){
             break;
 
         default:
-            require 'controllers/indexController.php';
+            header('Location:index.php');
+            exit();
     }
 }
 else{
-    require 'controllers/indexController.php';
+    header('Location:index.php');
+    exit();
 }

@@ -3,7 +3,7 @@
 function getAllCategories(){
     $db = dbConnect();
 
-    $query = $db->query('SELECT * FROM categories ');
+    $query = $db->query('SELECT * FROM categories ORDER BY name ASC');
     $categories =  $query->fetchAll();
 
     return $categories;

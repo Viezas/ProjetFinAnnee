@@ -27,25 +27,18 @@ if (isset($_GET['action'])){
                 $style = 'productPage';
             }
             else{
-                $scelledProducts = getAllScelledProducts();
-                $ScelledProductImages = ScelledProductImages();
-                $i=0;
-                $view = 'views/produitsScelles.php';
-                $pageTitle = 'Let\'s Duel ! | Produits Scellés';
-                $pageDescription = 'Affiche tout les produits scellés';
-                $style = 'categories';
+                header('location:index.php?page=produitsScelles&action=list');
+                exit();
             }
 
             break;
 
-        default :
+        default:
             header('Location:index.php');
             exit();
     }
 }
 else{
-    $view = 'views/index.php';
-    $pageTitle = 'Let\'s Duel !';
-    $pageDescription = 'Accueil du site';
-    $style = 'index';
+    header('Location:index.php');
+    exit();
 }

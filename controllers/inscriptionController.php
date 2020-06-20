@@ -38,29 +38,28 @@ if (isset($_GET['action'])) {
                         }
                         else{
                             $_SESSION['messages'][] = 'Problème lors de l\'insertion !';
-                            $view = 'views/inscription.php';
+                            header('Location:index.php?page=inscription&action=form');
+                            exit();
                         }
                     }
                     else{
                         $_SESSION['messages'][] = 'Email déjà utilisé !';
-                        $view = 'views/inscription.php';
+                        header('Location:index.php?page=inscription&action=form');
+                        exit();
                     }
                 }
             }
-            $pageTitle = 'Let\'s Duel ! | Inscription';
-            $pageDescription = 'Formulaire d\'inscription';
-            $style = 'connexion';
+            header('Location:index.php?page=inscription&action=form');
+            exit();
             break;
 
-        default :
+        default:
             header('Location:index.php');
             exit();
     }
 }
 else{
-    $view = 'views/index.php';
-    $pageTitle = 'Let\'s Duel !';
-    $pageDescription = 'Accueil du site';
-    $style = 'index';
+    header('Location:index.php');
+    exit();
 }
 

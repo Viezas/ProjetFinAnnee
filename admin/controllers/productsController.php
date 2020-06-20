@@ -2,6 +2,10 @@
 require 'models/Products.php';
 require 'models/Categories.php';
 
+if (isset($_SESSION['productId'])){
+    unset($_SESSION['productId']);
+}
+
 if (isset($_GET['action'])){
     switch ($_GET['action']) {
         case 'list':
@@ -48,11 +52,8 @@ if (isset($_GET['action'])){
             }
 
             $_SESSION['old_inputs'] = $_POST;
-            $categories = getAllCategories();
-            $view = 'views\productForm.php';
-            $pageTitle = 'Let\'s Duel ! | Ajout d\'un produit';
-            $pageDescription = 'Formulaire d\'ajout d\'un produit';
-            $style = 'form';
+                header('Location:index.php?page=products&action=new');
+                exit;
             }
             else{
                 if(is_int(intval($_POST['price'])) || is_float(intval($_POST['price']))){
@@ -79,11 +80,8 @@ if (isset($_GET['action'])){
                 }else{
                     $_SESSION['messages'][] = 'Le prix doit correspondre à un chiffre !';
                     $_SESSION['old_inputs'] = $_POST;
-                    $categories = getAllCategories();
-                    $view = 'views\productForm.php';
-                    $pageTitle = 'Let\'s Duel ! | Ajout d\'un produit';
-                    $pageDescription = 'Formulaire d\'ajout d\'un produit';
-                    $style = 'form';
+                    header('Location:index.php?page=products&action=new');
+                    exit;
                 }
             }
             break;
@@ -115,12 +113,8 @@ if (isset($_GET['action'])){
                     }
 
                 $_SESSION['old_inputs'] = $_POST;
-                $products = getAllProducts();
-                $categories = getAllCategories();
-                $view = 'views\productForm.php';
-                $pageTitle = 'Let\'s Duel ! | Ajout d\'un produit';
-                $pageDescription = 'Formulaire d\'ajout d\'un produit';
-                $style = 'form';
+                    header('Location:index.php?page=products&action=new');
+                    exit;
                 }
                 else {
                     if(is_int(intval($_POST['price'])) || is_float(intval($_POST['price']))){
@@ -135,30 +129,22 @@ if (isset($_GET['action'])){
                         header('Location:index.php?page=products&action=list');
                         exit;
                         }
-                        else{
-                        if (!isset($_SESSION['old_inputs'] )){
-                            $product = getProduct($_GET['id']);
+                    }
+                }
+                else{
+                    if (!isset($_SESSION['old_inputs'] )){
+                        $product = getProduct($_GET['id']);
                         if ($product==false){
                             header('Location:index.php?page=products&action=list');
                             exit;
                         }
-                            $products = getAllProducts();
-                            $categories = getAllCategories();
-                            $view = 'views\productForm.php';
-                            $pageTitle = 'Let\'s Duel ! | Ajout d\'un produit';
-                            $pageDescription = 'Formulaire d\'ajout d\'un produit';
-                            $style = 'form';
-                        }
-                        else{
-                            $products = getAllProducts();
-                            $categories = getAllCategories();
-                            $view = 'views\productForm.php';
-                            $pageTitle = 'Let\'s Duel ! | Ajout d\'un produit';
-                            $pageDescription = 'Formulaire d\'ajout d\'un produit';
-                            $style = 'form';
-                        }
+                        header('Location:index.php?page=products&action=new');
+                        exit;
                     }
-                }
+                    else{
+                        header('Location:index.php?page=products&action=new');
+                        exit;
+                    }
             }
 
             break;
@@ -179,9 +165,11 @@ if (isset($_GET['action'])){
             exit;
 
         default:
-        require 'controllers/indexController.php';
-        }
+            header('Location:index.php');
+            exit();
     }
+}
 else{
-require 'controllers/indexController.php';
+    header('Location:index.php');
+    exit();
 }

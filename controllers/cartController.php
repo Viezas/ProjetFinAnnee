@@ -23,49 +23,40 @@ if (isset($_GET['action'])){
 
         case 'addProduct':
             $product = getProduct($_GET['product_id']);
-            if (ctype_digit($_POST['quantity']) && ctype_digit($_POST['quantity']) <= $product['stock']){
+            if (ctype_digit($_POST['quantity']) && ctype_digit($_POST['quantity']) > 0 && ctype_digit($_POST['quantity']) <= $product['stock']){
                 $productExist = verifyProduct($_GET['product_id']);
                 if ($productExist == false){
-                    $view = 'views/index.php';
-                    $pageTitle = 'Let\'s Duel !';
-                    $pageDescription = 'Accueil du site';
-                    $style = 'index';
+                    header('location:index.php');
+                    exit();
                 }
                 $_SESSION['cart'][$_GET['product_id']] = $_POST['quantity'];
-                $cartProducts = getProductForCart();
-                $images = productImages();
-                $view = 'views/cartPage.php';
-                $pageTitle = 'Let\'s Duel !';
-                $pageDescription = 'Panier';
-                $style = 'cartPage';
+                header('location:index.php?page=cart&action=displayCart');
+                exit();
             }
             else{
-                $view = 'views/index.php';
-                $pageTitle = 'Let\'s Duel !';
-                $pageDescription = 'Accueil du site';
-                $style = 'index';
+                header('location: index.php');
             }
 
             break;
 
         case 'update_quantity':
             $_SESSION['cart'][$_GET['product_id']] = $_POST['quantity'];
-            $cartProducts = getProductForCart();
-            $images = productImages();
-            $view = 'views/cartPage.php';
-            $pageTitle = 'Let\'s Duel !';
-            $pageDescription = 'Panier';
-            $style = 'cartPage';
+            header('location:index.php?page=cart&action=displayCart');
+            exit();
             break;
 
         case 'deleteProduct':
             unset($_SESSION['cart'][$_GET['product_id']]);
-            $cartProducts = getProductForCart();
-            $images = productImages();
-            $view = 'views/cartPage.php';
-            $pageTitle = 'Let\'s Duel !';
-            $pageDescription = 'Panier';
-            $style = 'cartPage';
+            header('location:index.php?page=cart&action=displayCart');
+            exit();
             break;
+
+        default:
+            header('Location:index.php');
+            exit();
     }
+}
+else{
+    header('Location:index.php');
+    exit();
 }

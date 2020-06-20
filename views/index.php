@@ -2,29 +2,23 @@
 <div class="carouselle">
 
     <div class="bannerContainer">
-        <div class="banner">
-            <a href="index.php?page=accessoires">
-                <img src="assets/img/Produits_Scellés/Booster.png" class="bannerImg" alt="Booster : Savage Strike">
-            </a>
-        </div>
-
-        <div class="banner">
-            <a href="index.php?page=accessoires">
-                <img src="assets/img/Produits_Scellés/Tin6.png" class="bannerImg" alt="TinBox">
-            </a>
-        </div>
-
-        <div class="banner">
-            <a href="index.php?page=accessoires">
-                <img src="assets/img/Monstres/Z-ARC.jpg" class="bannerImg" alt="Z-ARC">
-            </a>
-        </div>
+        <?php foreach ($news as $new): ?>
+            <div class="banner">
+                <?php foreach ($newsImages as $newsImage): ?>
+                    <?php if ($new['id'] == $newsImage['product_id'] && $newsImage['main_image'] == 1):?>
+                        <a href="index.php?page=produitsScelles&action=productPage&id=<?=$new['id'];?>">
+                            <img src="assets/img/product/<?=$newsImage['name'];?>" class="bannerImg" alt="<?=$new['name'];?>">
+                        </a>
+                        <div class="bannerBtn">
+                            <a href="index.php?page=produitsScelles&action=productPage&id=<?=$new['id'];?>"><input type="button" value="Voir le produit"></a>
+                        </div>
+                    <?php endif;?>
+                <?php endforeach;?>
+            </div>
+        <?php endforeach;?>
     </div>
 
     <!-- Voir la page associé au produit -->
-    <div class="bannerBtn">
-        <a href="index.php?page=accessoires"><input type="button" value="Voir le produit"></a>
-    </div>
 
     <a class="prev" onclick="plusSlides(-1)"><img src="assets/img/Buttons/back.png" class="arrow" alt="previous arrow"></a>
     <a class="next" onclick="plusSlides(1)"><img src="assets/img/Buttons/right-arrow.png" class="arrow" alt="next arrow"></a>
@@ -46,56 +40,33 @@
     </div>
 
     <div class="new_ProductContainer">
+        <?php while ($i<sizeof($news)):?>
+            <?php foreach ($news as $new): ?>
+                <div class="productCase"
+                     onmouseover="document.getElementsByClassName('productDescription')[<?=$i;?>].style.display='flex'"
+                     onmouseout="document.getElementsByClassName('productDescription')[<?=$i;?>].style.display='none'">
+                    <?php $i++;?>
+                    <a href="index.php?page=produitsScelles&action=productPage&id=<?=$new['id'];?>" >
 
-        <div class="productCase"
-             onmouseover="document.getElementsByClassName('productDescription')[0].style.display='flex'"
-             onmouseout="document.getElementsByClassName('productDescription')[0].style.display='none'">
-            <a href="index.php?page=accessoires" >
-            <div class="productImage">
-                <img src="assets/img/Produits_Scellés/Booster.png" class="booster" alt="Booster : Savage Strike">
-            </div>
-            <div class="productDescription">
-                <p>
-                    Booster :<br>
-                    Savage Strike<br>
-                    1.20€
-                </p>
-                <a href="index.php?page=produitsScelles&action=list"><input type="button" value="Voir le produit"></a>
-            </div>
-            </a>
-        </div>
+                        <div class="productImage">
+                            <?php foreach ($newsImages as $newsImage): ?>
+                                <?php if ($new['id'] == $newsImage['product_id'] && $newsImage['main_image'] == 1):?>
+                                    <img src="assets/img/product/<?=$newsImage['name'];?>" class="product" alt="<?=$new['name'];?>">
+                                <?php endif;?>
+                            <?php endforeach;?>
+                        </div>
 
-        <div class="productCase"
-             onmouseover="document.getElementsByClassName('productDescription')[1].style.display='flex'"
-             onmouseout="document.getElementsByClassName('productDescription')[1].style.display='none'">
-            <a href="index.php?page=accessoires">
-            <img src="assets/img/Produits_Scellés/Tin6.png" class="tinBox" alt="TinBox">
-            <div class="productDescription">
-                <p>
-                    TinBox 2019 :<br>
-                    Sarcophage Doré<br>
-                    20.00€
-                </p>
-                <a href="index.php?page=produitsScelles&action=list"><input type="button" value="Voir le produit"></a>
-            </div>
-            </a>
-        </div>
-
-        <div class="productCase"
-             onmouseover="document.getElementsByClassName('productDescription')[2].style.display='flex'"
-             onmouseout="document.getElementsByClassName('productDescription')[2].style.display='none'">
-            <a href="index.php?page=accessoires">
-            <img src="assets/img/Monstres/Z-ARC.jpg" class="card" alt="Z-ARC">
-            <div class="productDescription">
-                <p>
-                    Monstre :<br>
-                    Z-ARC<br>
-                    1.00€
-                </p>
-                <a href="index.php?page=produitsScelles&action=list"><input type="button" value="Voir le produit"></a>
-            </div>
-            </a>
-        </div>
+                        <div class="productDescription">
+                            <p>
+                                <?=$new['name'];?><br>
+                                <?=$new['price'];?>€
+                            </p>
+                            <a href="index.php?page=produitsScelles&action=productPage&id=<?=$new['id'];?>"><input type="button" value="Voir le produit"></a>
+                        </div>
+                    </a>
+                </div>
+            <?php endforeach;?>
+        <?php endwhile;?>
     </div>
 </div>
 
@@ -112,29 +83,32 @@
         <div class="productCase"
              onmouseover="document.getElementsByClassName('productDescription')[3].style.display='flex'"
              onmouseout="document.getElementsByClassName('productDescription')[3].style.display='none'">
-            <a href="index.php?page=accessoires">
-            <img src="assets/img/Pièges/Normal2.jpg" class="card" alt="Piège : Force de Miroir">
+            <a href="index.php?page=produitsScelles&action=productPage&id=80">
+            <div class="productImage">
+                <img src="assets/img/product/80-58.jpg" class="product" alt="Piège : Force de Miroir">
+            </div>
             <div class="productDescription">
                 <p>
-                    Piège :<br>
                     Force de Miroir<br>
-                    2.50€
+                    2.68€
                 </p>
-                <a href="index.php?page=produitsScelles&action=list"><input type="button" value="Voir le produit"></a>
+                <a href="index.php?page=produitsScelles&action=productPage&id=80"><input type="button" value="Voir le produit"></a>
             </div>
+
             </a>
         </div>
 
         <div class="productCase"
              onmouseover="document.getElementsByClassName('productDescription')[4].style.display='flex'"
              onmouseout="document.getElementsByClassName('productDescription')[4].style.display='none'">
-            <a href="index.php?page=accessoires">
-            <img src="assets/img/Accessoires/CardSleeve.jpg" class="cardSlevee" alt="Protèges cartes">
+            <a href="index.php?page=accessoires&action=productPage&id=51">
+            <div class="productImage">
+                <img src="assets/img/product/51-36.jpg" class="product" alt="Protèges cartes">
+            </div>
             <div class="productDescription">
                 <p>
-                    Accessoires :<br>
                     Protèges cartes Ash Blossom<br>
-                    4.00€
+                    5.00€
                 </p>
                 <a href="index.php?page=produitsScelles&action=list"><input type="button" value="Voir le produit"></a>
             </div>
@@ -144,15 +118,16 @@
         <div class="productCase"
              onmouseover="document.getElementsByClassName('productDescription')[5].style.display='flex'"
              onmouseout="document.getElementsByClassName('productDescription')[5].style.display='none'">
-            <a href="index.php?page=accessoires">
-            <img src="assets/img/Monstres/CrystalWing.jpg" class="card" alt="Dragon synchro de l'aile de cristal">
+            <a href="index.php?page=produitsScelles&action=productPage&id=83">
+            <div class="productImage">
+                <img src="assets/img/product/83-61.jpg" class="product" alt="Dragon synchro de l'aile de cristal">
+            </div>
             <div class="productDescription">
                 <p>
-                    Monstre :<br>
                     Dragon synchro de l'aile de cristal<br>
-                    1.50€
+                    5.36€
                 </p>
-                <a href="index.php?page=produitsScelles&action=list"><input type="button" value="Voir le produit"></a>
+                <a href="index.php?page=produitsScelles&action=productPage&id=83"><input type="button" value="Voir le produit"></a>
             </div>
             </a>
         </div>
@@ -172,15 +147,16 @@
         <div class="productCase"
              onmouseover="document.getElementsByClassName('productDescription')[6].style.display='flex'"
              onmouseout="document.getElementsByClassName('productDescription')[6].style.display='none'">
-            <a href="index.php?page=accessoires">
-            <img src="assets/img/Pièges/Continue.jpg" class="card" alt="Piège continue : Lanceur de la Force de Miroir">
+            <a href="index.php?page=produitsScelles&action=productPage&id=68">
+            <div class="productImage">
+                <img src="assets/img/product/68-47.jpg" class="product" alt="Figurine pop Atem">
+            </div>
             <div class="productDescription">
                 <p>
-                    Piège continue :<br>
-                    Lanceur de la Force de Miroir<br>
-                    1.00€
+                    Figurine Pop Atem<br>
+                    10.00€
                 </p>
-                <a href="index.php?page=produitsScelles&action=list"><input type="button" value="Voir le produit"></a>
+                <a href="index.php?page=produitsScelles&action=productPage&id=68"><input type="button" value="Voir le produit"></a>
             </div>
             </a>
         </div>
@@ -188,15 +164,16 @@
         <div class="productCase"
              onmouseover="document.getElementsByClassName('productDescription')[7].style.display='flex'"
              onmouseout="document.getElementsByClassName('productDescription')[7].style.display='none'">
-            <a href="index.php?page=accessoires">
-            <img src="assets/img/Magie/Normal2.jpg" class="card" alt="Magie : Monster Reborn">
+            <a href="index.php?page=produitsScelles&action=productPage&id=79">
+            <div class="productImage">
+                <img src="assets/img/product/79-57.jpg" class="product" alt="Magie : Monster Reborn">
+            </div>
             <div class="productDescription">
                 <p>
-                    Magie :<br>
                     Monster Reborn<br>
-                    2.00€
+                    10.00€
                 </p>
-                <a href="index.php?page=produitsScelles&action=list"><input type="button" value="Voir le produit"></a>
+                <a href="index.php?page=produitsScelles&action=productPage&id=79"><input type="button" value="Voir le produit"></a>
             </div>
             </a>
         </div>
@@ -204,15 +181,16 @@
         <div class="productCase"
              onmouseover="document.getElementsByClassName('productDescription')[8].style.display='flex'"
              onmouseout="document.getElementsByClassName('productDescription')[8].style.display='none'">
-            <a href="index.php?page=accessoires" >
-            <img src="assets/img/Magie/Rapide2.jpg" class="card" alt="Magie rapide : Super Polymérisation">
+            <a href="index.php?page=produitsScelles&action=productPage&id=46" >
+            <div class="productImage">
+                <img src="assets/img/product/46-31.jpg" class="product" alt="Magie rapide : Super Polymérisation">
+            </div>
             <div class="productDescription">
                 <p>
-                    Magie rapide :<br>
-                    Super Polymérisation<br>
-                    5.00€
+                    Stater Deck Yu-Gi-Oh 5d's (2009)<br>
+                    70.00€
                 </p>
-                <a href="index.php?page=produitsScelles&action=list"><input type="button" value="Voir le produit"></a>
+                <a href="index.php?page=produitsScelles&action=productPage&id=46"><input type="button" value="Voir le produit"></a>
             </div>
             </a>
         </div>

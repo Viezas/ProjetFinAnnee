@@ -4,35 +4,39 @@ a:link, a:visited{
 }
 
 .carouselle{
-    width: 100%;
+    max-width: 100%;
     height: 600px;
     background-size: 100%;
     background-image: url("../img/Bannière/YugiohWallpaper.jpg");
     background-position: left;
+    background-repeat: no-repeat;
     position: relative;
     margin: auto;
     display: grid;
-    grid-template-columns: repeat(12, 106.53px);
+    grid-template-columns: repeat(12, 8.333%);
     grid-template-rows: repeat(10, 10%);
 }
 
 .bannerContainer{
     grid-row: 3/11;
-    grid-column: 9/13;
+    grid-column: 8/11;
     display: flex;
     align-items: center;
     justify-content: center;
 }
 
 .bannerImg{
-    height: auto;
-    width: 230px;
+    max-width: 14.973958333333334vw;
+}
+
+.product{
+    max-width: 80%;
 }
 
 .bannerBtn{
-    position: absolute;
-    top: 520px;
-    left: 1230px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 input[type='button']{
@@ -42,13 +46,12 @@ input[type='button']{
     font-size: 15px;
     border: 1px solid black;
     height: 52px;
-    width: 172px;
+    max-width: 100%;
     border-radius: 10px;
 }
 
 .arrow{
-    height: 85px;
-    width: auto;
+    max-height: 11.772853185595569vh;
 }
 
 .dots{
@@ -87,7 +90,7 @@ input[type='button']{
 
 .newProductContainer,.bestSellerContainer,.popularContainer{
     width: 100%;
-    height: 1037px;
+    height: 143.62880886426592vh;
 }
 
 .bestSellerContainer{
@@ -105,6 +108,7 @@ input[type='button']{
     font-weight: normal;
     margin-top: 5%;
     margin-bottom: 0;
+    text-align: center;
 }
 
 .title{
@@ -116,44 +120,26 @@ input[type='button']{
 }
 
 .title hr{
-    width: 140px;
+    width: 10%;
     border: 1.2px solid #707070;
 }
 
 .productCase{
     border: 1px solid black;
-    width: 450px;
-    height: 650px;
+    max-width: 29.296875vw;
+    height: 90.02770083102493vh;
     display: flex;
     align-items: center;
     justify-content: center;
     background-color: white;
 }
 
-.booster{
-    width: 300px;
-    height: 533px;
-}
-
-.tinBox{
-    width: auto;
-    height: 350px;
-}
-
-.card{
-    width: 380px;
-    height: 553px;
-}
-
-.cardSlevee{
-    width: 300px;
-    height: 565px;
-}
-
 .productImage{
     z-index: 1;
-    position: relative;
-
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
 }
 
 .productDescription{
@@ -165,10 +151,71 @@ input[type='button']{
     font-size: 25px;
     text-align: center;
     margin: 0;
-    height: 650px;
-    width: 450px;
+    height: 90.02770083102493vh;
+    width: 29.296875vw;
     background-color: rgba(235, 235, 235, .5);
     align-items: center;
     justify-content: center;
     flex-direction: column;
+}
+
+@media (max-width: 1085px) {
+    .carouselle, .dots{
+        display: none;
+    }
+
+    .new_ProductContainer, .bestSeller_ProductContainer, .popular_ProductContainer{
+        flex-wrap: wrap;
+    }
+
+    div.productCase{
+        max-width: 45%;
+        margin-bottom: 5%;
+    }
+
+    .product{
+        max-width: 70%;
+    }
+
+    .productDescription{
+        width: 45%;
+    }
+
+    .newProductContainer,.bestSellerContainer,.popularContainer{
+        width: 100%;
+        height: 100%;
+    }
+
+    .title h1{
+        font-size: 50px;
+    }
+
+    .title hr{
+        width: 20%;
+    }
+}
+
+@media (max-width: 670px) {
+    div.productCase{
+        max-width: 80%;
+        margin-bottom: 5%;
+    }
+
+    .productDescription{
+        width: 80%;
+    }
+
+    .productDescription p{
+        font-size: 30px;
+    }
+
+    input[type="button"]{
+        width: 25.449101796407184vw;
+        height: 9.695290858725762vh;
+        font-size: 20px;
+    }
+}
+
+@media (max-width: 375px) {
+
 }

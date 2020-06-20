@@ -63,24 +63,33 @@
 
     <div class="productContainer">
         <div class="productCase_Container">
-            <!-- Foreach ici -->
-            <div class="productCase"
-                 onmouseover="document.getElementsByClassName('productDescription')[0].style.display='flex'"
-                 onmouseout="document.getElementsByClassName('productDescription')[0].style.display='none'">
-                <a href="index.php?page=accessoires" >
-                    <div class="productImage">
-                        <img src="assets/img/Monstres/Z-ARC.jpg" class="product" alt="Z-ARC">
+            <?php while ($i<sizeof($cards)):?>
+                <?php foreach ($cards as $card): ?>
+                    <div class="productCase"
+                         onmouseover="document.getElementsByClassName('productDescription')[<?=$i;?>].style.display='flex'"
+                         onmouseout="document.getElementsByClassName('productDescription')[<?=$i;?>].style.display='none'">
+                        <?php $i++;?>
+                        <a href="index.php?page=produitsScelles&action=productPage&id=<?=$card['id'];?>" >
+
+                            <div class="productImage">
+                                <?php foreach ($cardImages as $cardImage): ?>
+                                    <?php if ($card['id'] == $cardImage['product_id'] && $cardImage['main_image'] == 1):?>
+                                        <img src="assets/img/product/<?=$cardImage['name'];?>" class="product" alt="<?=$card['name'];?>">
+                                    <?php endif;?>
+                                <?php endforeach;?>
+                            </div>
+
+                            <div class="productDescription">
+                                <p>
+                                    <?=$card['name'];?><br>
+                                    <?=$card['price'];?>€
+                                </p>
+                                <a href="index.php?page=produitsScelles&action=productPage&id=<?=$card['id'];?>"><input type="button" value="Voir le produit"></a>
+                            </div>
+                        </a>
                     </div>
-                    <div class="productDescription">
-                        <p>
-                            Monstre :<br>
-                            Z-ARC<br>
-                            1.00€
-                        </p>
-                        <a href="index.php?page=produitsScelles&action=list"><input type="button" value="Voir le produit"></a>
-                    </div>
-                </a>
-            </div>
+                <?php endforeach;?>
+            <?php endwhile;?>
         </div>
     </div>
 </div>

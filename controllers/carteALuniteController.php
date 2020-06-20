@@ -1,5 +1,6 @@
 <?php
 
+require 'models/card.php';
 
 //Vérification qu'une action a été demandé
 if (isset($_GET['action'])){
@@ -7,24 +8,37 @@ if (isset($_GET['action'])){
     switch ($_GET['action']){
         //Si on demande de lister les produits
         case 'list':
+            $cards = getAllCards();
+            $cardImages = cardImages();
+            $i=0;
             $view = 'views/carteALunite.php';
-            $pageTitle = 'Let\'s Duel ! | Carte à l\'unité';
-            $pageDescription = 'Affiche toute les cartes à l\'unité';
+            $pageTitle = 'Let\'s Duel ! | Carte à L\'unité';
+            $pageDescription = 'Affiche toutes les cartes';
             $style = 'categories';
             break;
 
-        case 'filter':
+        case 'productPage':
+            $product = getProduct($_GET['id']);
+            if ($product){
+                $productImage = productImage($_GET['id']);
+                $view = 'views/productPage.php';
+                $pageTitle = 'Let\'s Duel ! | Produits';
+                $pageDescription = 'Affiche les informations du produits';
+                $style = 'productPage';
+            }
+            else{
+                header('location:index.php?page=carteALunite&action=list');
+                exit();
+            }
 
             break;
 
-        default :
+        default:
             header('Location:index.php');
             exit();
     }
 }
 else{
-    $view = 'views/index.php';
-    $pageTitle = 'Let\'s Duel !';
-    $pageDescription = 'Accueil du site';
-    $style = 'index';
+    header('Location:index.php');
+    exit();
 }

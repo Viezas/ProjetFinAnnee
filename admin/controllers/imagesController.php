@@ -40,26 +40,20 @@ if (isset($_GET['action'])){
             $issetMainImage = issetMainImage();
             if ($issetMainImage){
                 $_SESSION['messages'][] = 'Il existe déjà un main image !';
-                $view = 'views/imagesForm.php';
-                $pageTitle = 'Let\'s Duel ! | Formulaire image';
-                $pageDescription = 'Ajouter une image à unproduit';
-                $style = 'form';
+                header('location:index.php?page=images&action=list');
+                exit();
             }
             else{
                 $insertImage = insertImage();
                 if ($insertImage){
                     $productMainImages = getProductMainImages($_SESSION['productId']);
                     $productSecondaryImages = getProductSecondaryImages($_SESSION['productId']);
-                    $view = 'views/imagesList.php';
-                    $pageTitle = 'Let\'s Duel ! | Images';
-                    $pageDescription = 'Liste tout les images liée à un produit';
-                    $style = 'list';
+                    header('location:index.php?page=images&action=list');
+                    exit();
                 }
                 else{
-                    $view = 'views/imagesForm.php';
-                    $pageTitle = 'Let\'s Duel ! | Formulaire image';
-                    $pageDescription = 'Ajouter une image à unproduit';
-                    $style = 'form';
+                    header('location:index.php?page=images&action=new');
+                    exit();
                 }
             }
 
@@ -79,13 +73,11 @@ if (isset($_GET['action'])){
                 else{
                     $_POST['is_main'] = 1;
                 }
-                $issetMainImage = issetMainImage();
+                $issetMainImage = issetMainImage($_GET['id']);
                 if ($issetMainImage){
                     $_SESSION['messages'][] = 'Il existe déjà un main image !';
-                    $view = 'views/imagesForm.php';
-                    $pageTitle = 'Let\'s Duel ! | Formulaire image';
-                    $pageDescription = 'Ajouter une image à unproduit';
-                    $style = 'form';
+                    header('location:index.php?page=images&action=list');
+                    exit();
                 }
                 $result = updateImage($_GET['id'], $_POST);
                 $_SESSION['messages'][] = $result ? 'Image mis à jour !' : 'Erreur lors de la mise à jour !';
@@ -100,16 +92,12 @@ if (isset($_GET['action'])){
                         header('Location:index.php?page=images&action=list');
                         exit;
                     }
-                    $view = 'views/imagesForm.php';
-                    $pageTitle = 'Let\'s Duel ! | Formulaire image';
-                    $pageDescription = 'Ajouter une image à unproduit';
-                    $style = 'form';
+                    header('Location:index.php?page=images&action=new');
+                    exit;
                 }
                 else{
-                    $view = 'views/imagesForm.php';
-                    $pageTitle = 'Let\'s Duel ! | Formulaire image';
-                    $pageDescription = 'Ajouter une image à unproduit';
-                    $style = 'form';
+                    header('Location:index.php?page=images&action=new');
+                    exit;
                 }
             }
 
@@ -131,10 +119,12 @@ if (isset($_GET['action'])){
             exit;
             break;
 
-        default :
-            require 'controllers/indexController.php';
+        default:
+            header('Location:index.php');
+            exit();
     }
 }
 else{
-    require 'controllers/indexController.php';
+    header('Location:index.php');
+    exit();
 }
