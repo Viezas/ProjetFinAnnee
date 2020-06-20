@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Hôte : 127.0.0.1:3306
--- Généré le :  sam. 20 juin 2020 à 14:14
+-- Généré le :  sam. 20 juin 2020 à 20:52
 -- Version du serveur :  10.4.10-MariaDB
 -- Version de PHP :  7.4.0
 
@@ -140,7 +140,7 @@ CREATE TABLE IF NOT EXISTS `products` (
   `stock` int(11) NOT NULL,
   `is_activated` tinyint(1) NOT NULL DEFAULT 0,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=87 DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB AUTO_INCREMENT=92 DEFAULT CHARSET=utf8mb4;
 
 --
 -- Déchargement des données de la table `products`
@@ -202,7 +202,7 @@ CREATE TABLE IF NOT EXISTS `product_categories` (
   PRIMARY KEY (`id`),
   KEY `products_link` (`product_id`),
   KEY `category_link` (`category_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=102 DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB AUTO_INCREMENT=107 DEFAULT CHARSET=utf8mb4;
 
 --
 -- Déchargement des données de la table `product_categories`
@@ -272,7 +272,7 @@ CREATE TABLE IF NOT EXISTS `product_images` (
   `is_activated` tinyint(1) NOT NULL DEFAULT 0,
   PRIMARY KEY (`id`),
   KEY `product_images_product_link` (`product_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=67 DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB AUTO_INCREMENT=75 DEFAULT CHARSET=utf8mb4;
 
 --
 -- Déchargement des données de la table `product_images`
