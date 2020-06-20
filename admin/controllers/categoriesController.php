@@ -38,6 +38,7 @@ if (isset($_GET['action'])){
             break;
 
         case 'edit':
+            $_SESSION['category_id'] = $_GET['id'];
             if(!empty($_POST)){
                 if(empty($_POST['name'])){
 
@@ -48,9 +49,15 @@ if (isset($_GET['action'])){
                     $_SESSION['old_inputs'] = $_POST;
                     header('Location:index.php?page=categories&action=new');
                     exit;
-                }else {
-                    $result = updateCategory($_GET['id'], $_POST);
-                    $_SESSION['messages'][] = $result ? 'Categorie mis à jour !' : 'Erreur lors de la mise à jour !';
+                }
+                else {
+                    if (ctype_digit($_GET['id']) == $_SESSION['category_id']){
+                        $result = updateCategory($_SESSION['category_id'], $_POST);
+                        $_SESSION['messages'][] = $result ? 'Categorie mis à jour !' : 'Erreur lors de la mise à jour !';
+                        header('Location:index.php?page=categories&action=list');
+                        exit;
+                    }
+                    $_SESSION['old_inputs'] = $_POST;
                     header('Location:index.php?page=categories&action=list');
                     exit;
                 }
@@ -62,12 +69,16 @@ if (isset($_GET['action'])){
                         header('Location:index.php?page=categories&action=list');
                         exit;
                     }
-                    header('Location:index.php?page=categories&action=new');
-                    exit;
+                    $view = 'views\categoryForm.php';
+                    $pageTitle = 'Let\'s Duel ! | Ajout d\'une catégrorie';
+                    $pageDescription = 'Formulaire d\'ajout d\'une catégorie';
+                    $style = 'form';
                 }
                 else{
-                    header('Location:index.php?page=categories&action=new');
-                    exit;
+                    $view = 'views\categoryForm.php';
+                    $pageTitle = 'Let\'s Duel ! | Ajout d\'une catégrorie';
+                    $pageDescription = 'Formulaire d\'ajout d\'une catégorie';
+                    $style = 'form';
                 }
             }
 

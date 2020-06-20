@@ -73,7 +73,7 @@ if (isset($_GET['action'])){
                     $pageDescription = 'formulaire de modification d\'un utilisateur';
                     $style = 'form';
                 }
-                elseif (!ctype_digit($_POST['is_admin']) && (intval($_POST['is_admin']) !== 0 || intval($_POST['is_admin']) !==1)){
+                elseif (!ctype_digit($_POST['is_admin']) && (ctype_digit($_POST['is_admin']) !== 0 || ctype_digit($_POST['is_admin']) !==1)){
                     $_SESSION['messages'][] = 'Ne touchez pas au code via la console s\'il-vous-plaît !!!';
                     $_SESSION['old_inputs'] = $_POST;
                     header('location: index.php?page=users&action=new');
@@ -93,9 +93,15 @@ if (isset($_GET['action'])){
                         header('Location:index.php?page=users&action=list');
                         exit;
                     }
+                    $view = 'views/userForm.php';
+                    $pageTitle = 'Let\'s Duel ! | Ajouter un Utilisateur';
+                    $pageDescription = 'formulaire d\'ajouter d\'un utilisateur';
+                    $style = 'form';
                 }
-                header('location: index.php?page=users&action=new');
-                exit();
+                $view = 'views/userForm.php';
+                $pageTitle = 'Let\'s Duel ! | Ajouter un Utilisateur';
+                $pageDescription = 'formulaire d\'ajouter d\'un utilisateur';
+                $style = 'form';
             }
             break;
 

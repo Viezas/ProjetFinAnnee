@@ -114,11 +114,12 @@ function updateProduct($id, $informations){
 
 function deleteProduct($id)
 {
-$db = dbConnect();
-    $product = getProduct($id);
-    if(!empty($product['image'])){
-        $unlink = unlink("../assets/img/product/". $product['image']);
+    $db = dbConnect();
+    $image = getImage($id);
+    if(!empty($image['name'])){
+        $unlink = unlink("../assets/img/product/". $image['name']);
     }
+
 
 
     $query = $db->prepare('DELETE FROM products WHERE id = ?');
@@ -126,4 +127,15 @@ $db = dbConnect();
 
     return $result;
 
+}
+
+function getImage($id){
+    $db = dbConnect();
+
+    $query = $db->prepare("SELECT * FROM product_images WHERE product_id = ?");
+    $query->execute([
+        $id
+    ]);
+
+    return $query->fetch();
 }

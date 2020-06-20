@@ -109,13 +109,26 @@ function updateImage($id, $informations){
     return $result;
 }
 
-function issetMainImage(){
+function newIssetMainImage($id){
     $db = dbConnect();
 
     $query = $db->prepare('SELECT main_image = 1 FROM product_images WHERE product_id = ?');
     $query->execute([
-        $_SESSION['productId'],
+        $id,
     ]);
     $mainImageExist = $query->fetch();
+
+    return $mainImageExist;
+}
+
+function issetMainImage($id){
+    $db = dbConnect();
+
+    $query = $db->prepare('SELECT * FROM product_images WHERE id = ? AND main_image = 1');
+    $query->execute([
+        $id,
+    ]);
+    $mainImageExist = $query->fetch();
+
     return $mainImageExist;
 }

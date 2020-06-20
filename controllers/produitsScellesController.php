@@ -27,7 +27,7 @@ if (isset($_GET['action'])){
                 $style = 'productPage';
             }
             else{
-                header('location:index.php?page=produitsScelles&action=list');
+                header('location:index.php');
                 exit();
             }
 
