@@ -143,3 +143,17 @@ a:link, a:visited{
     }
 
 }
+
+@media (max-width: 630px) {
+    .filter{
+        display: none;
+    }
+
+    .productCase{
+        width: 45%;
+    }
+
+    .productDescription{
+        width:  45%;
+    }
+}
