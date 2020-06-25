@@ -12,7 +12,7 @@ nav{
     height: 14.542936288088642vh;
 }
 
-nav a, nav a:visited{
+nav a:link, nav a:visited{
     text-decoration: none;
     color: white;
     font-weight: bold;

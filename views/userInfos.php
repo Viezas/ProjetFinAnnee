@@ -31,7 +31,7 @@
 
                 <div class="email">
                     <label for="email" id="emailLabel">Email</label>
-                    <input id="email" type="email" name="email" value="<?php if(isset($user) && !empty($user)): ?> <?= $user['email'];?> <?php else: ?> <?= '';?> <?php endif;?>" required><br>
+                    <input id="email" type="email" name="email" value="<?php if(isset($user) && !empty($user)): ?> <?= $user['email'];?> <?php else: ?> <?= '';?> <?php endif;?>"><br>
                 </div>
 
                 <div class="password">
