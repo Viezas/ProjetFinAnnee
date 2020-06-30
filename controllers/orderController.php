@@ -9,22 +9,22 @@ require 'models/Orders.php';
 if (isset($_GET['action'])){
     switch ($_GET['action']){
         case 'new':
-            $insertOrder = insertOrder($_SESSION['user']);
-            if ($insertOrder){
-                $insertOrderInformations = insertOrderInformations();
-                if ($insertOrderInformations){
-                    unset($_SESSION['cart']);
+            if (!empty($_SESSION['cart'])){
+                $insertOrder = insertOrder($_SESSION['user']);
+                if ($insertOrder){
+                    $insertOrderInformations = insertOrderInformations();
+                    if ($insertOrderInformations){
+                        unset($_SESSION['cart']);
+                    }
+                    $_SESSION['messages'][] = 'Commande généré avec succès !';
+                    header('location:index.php?page=order&action=list');
+                    exit();
                 }
-                $_SESSION['messages'][] = 'Commande généré avec succès !';
-                header('location:index.php?page=order&action=list');
-                exit();
             }
             else{
-                $_SESSION['messages'][] = 'Une erreur c\'est produite lors de la génération de la commande !';
-                $view = 'views/cartPage.php';
-                $pageTitle = 'Let\'s Duel !';
-                $pageDescription = 'Panier';
-                $style = 'cartPage';
+                $_SESSION['messages'][] = 'Impossible de passer une commande avec un paner vide !';
+                header('location:index.php?page=order&action=list');
+                exit();
             }
             break;
 

@@ -23,7 +23,7 @@ if (isset($_GET['action'])){
 
         case 'addProduct':
             $product = getProduct($_GET['product_id']);
-            if (ctype_digit($_POST['quantity']) && ctype_digit($_POST['quantity']) > 0 && ctype_digit($_POST['quantity']) <= $product['stock']){
+            if (ctype_digit($_POST['quantity']) && ctype_digit($_POST['quantity']) > 0  && $_POST['quantity'] < $product['stock']){
                 $productExist = verifyProduct($_GET['product_id']);
                 if ($productExist == false){
                     header('location:index.php');
@@ -40,9 +40,17 @@ if (isset($_GET['action'])){
             break;
 
         case 'update_quantity':
-            $_SESSION['cart'][$_GET['product_id']] = $_POST['quantity'];
-            header('location:index.php?page=cart&action=displayCart');
-            exit();
+            $product = getProduct($_GET['product_id']);
+            if (ctype_digit($_POST['quantity']) && ctype_digit($_POST['quantity']) > 0  && $_POST['quantity'] < $product['stock']){
+                $_SESSION['cart'][$_GET['product_id']] = $_POST['quantity'];
+                header('location:index.php?page=cart&action=displayCart');
+                exit();
+            }
+            else{
+                $_SESSION['messages'][] = 'La quantité doit etre un nombre inférieur ou égal au stock disponible !';
+                header('location:index.php?page=cart&action=displayCart');
+                exit();
+            }
             break;
 
         case 'deleteProduct':

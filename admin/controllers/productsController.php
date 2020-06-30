@@ -147,8 +147,6 @@ if (isset($_GET['action'])){
                     }
                 }
             }
-            header('Location:index.php?page=products&action=list');
-            exit;
             break;
 
         case 'delete':

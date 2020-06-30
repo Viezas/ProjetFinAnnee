@@ -25,26 +25,8 @@ if (isset($_GET['action'])){
             break;
 
         case 'add':
-            if (!isset($_POST['is_activated'])){
-                $_POST['is_activated'] = 0;
-            }
-            else{
-                $_POST['is_activated'] = 1;
-            }
             if (!isset($_POST['is_main'])){
-                    $_POST['is_main'] = 0;
-            }
-            else{
-                $_POST['is_main'] = 1;
-            }
-
-            $issetMainImage = newIssetMainImage($_SESSION['productId']);
-            if ($issetMainImage){
-                $_SESSION['messages'][] = 'Il existe déjà un main image !';
-                header('location:index.php?page=images&action=list');
-                exit();
-            }
-            else{
+                $_POST['is_main'] = 0;
                 $insertImage = insertImage();
                 if ($insertImage){
                     $productMainImages = getProductMainImages($_SESSION['productId']);
@@ -52,12 +34,16 @@ if (isset($_GET['action'])){
                     header('location:index.php?page=images&action=list');
                     exit();
                 }
-                else{
-                    header('location:index.php?page=images&action=new');
+            }
+            else{
+                $_POST['is_main'] = 1;
+                $issetMainImage = newIssetMainImage($_SESSION['productId']);
+                if ($issetMainImage){
+                    $_SESSION['messages'][] = 'Il existe déjà un main image !';
+                    header('location:index.php?page=images&action=list');
                     exit();
                 }
             }
-
             break;
 
         case 'edit':
