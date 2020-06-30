@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Hôte : 127.0.0.1:3306
--- Généré le :  sam. 20 juin 2020 à 20:52
+-- Généré le :  mar. 30 juin 2020 à 11:48
 -- Version du serveur :  10.4.10-MariaDB
 -- Version de PHP :  7.4.0
 
@@ -272,7 +272,7 @@ CREATE TABLE IF NOT EXISTS `product_images` (
   `is_activated` tinyint(1) NOT NULL DEFAULT 0,
   PRIMARY KEY (`id`),
   KEY `product_images_product_link` (`product_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=75 DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB AUTO_INCREMENT=76 DEFAULT CHARSET=utf8mb4;
 
 --
 -- Déchargement des données de la table `product_images`
@@ -336,7 +336,7 @@ CREATE TABLE IF NOT EXISTS `users` (
   `password` varchar(255) NOT NULL,
   `is_admin` tinyint(1) NOT NULL DEFAULT 0,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=27 DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB AUTO_INCREMENT=28 DEFAULT CHARSET=utf8mb4;
 
 --
 -- Déchargement des données de la table `users`
@@ -344,7 +344,8 @@ CREATE TABLE IF NOT EXISTS `users` (
 
 INSERT INTO `users` (`id`, `last_name`, `first_name`, `adress`, `email`, `password`, `is_admin`) VALUES
 (22, 'User', 'Normal', '86 plaine des pommiers', 'user@gmail.com', 'ee11cbb19052e40b07aac0ca060c23ee', 0),
-(24, '  Ngauv', '  Victor  ', '  3 Rue Pierre et Marie Curie  ', 'dxviezas@gmail.com', 'b7657916ec6d64c38d37bc87213c775e', 1);
+(24, 'Ngauv', 'Victor  ', '3 Rue Pierre et Marie Curie  ', 'dxviezas@gmail.com', 'b7657916ec6d64c38d37bc87213c775e', 1),
+(27, 'test', 'test', 'test', 'test@gmail.com', '81dc9bdb52d04dc20036dbd8313ed055', 0);
 
 --
 -- Contraintes pour les tables déchargées
